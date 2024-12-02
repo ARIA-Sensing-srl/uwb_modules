@@ -1,0 +1,251 @@
+<ARIA_Radar_Module radar_module_name="LT103OEM.arm" xml_dataformat="0.1.0">
+ <parameter_list count="56" expected_moduleid_value="0000020102010000" inquiry_instanceid_command="02" inquiry_moduleid_command="01">
+  <parameter command_string="73" param_group="ungrouped" param_io="input" param_name="start" param_type="void" plotted="false" size="scalar"/>
+  <parameter command_string="6F" param_group="ungrouped" param_io="input" param_name="stop" param_type="void" plotted="false" size="scalar"/>
+  <parameter command_string="21" param_group="ungrouped" param_io="input" param_name="reset" param_type="void" plot_type="undefined" plotted="true" size="scalar"/>
+  <parameter command_string="64[0]" param_group="data" param_io="output" param_name="data_count" param_type="uint16" plotted="false" size="scalar">
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="64[1]" param_group="data" param_io="output" param_name="data_elapse_time" param_type="uint16" plotted="false" size="scalar">
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="64[2]" param_group="data" param_io="output" param_name="data_payload_size" param_type="uint16" plotted="false" size="scalar">
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="64[3]" param_group="data" param_io="output" param_name="data" param_type="float" plotted="false" size="scalar">
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="70" param_group="ungrouped" param_io="io" param_name="tx_power" param_type="enum" plotted="false" size="scalar">
+   <available_set size="4">TX_OFF
+0
+TX_POWER_LOW
+1
+TX_POWER_MEDIUM
+2
+TX_POWER_HIGH
+3</available_set>
+   <values size="1">TX_POWER_MEDIUM</values>
+  </parameter>
+  <parameter command_string="78" param_group="ungrouped" param_io="io" param_name="min_range" param_type="float" plotted="false" size="scalar">
+   <min_max_values max_val="11" min_val="0"/>
+   <inquiry_value value="ffffffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="58" param_group="ungrouped" param_io="io" param_name="max_range" param_type="float" plotted="false" size="scalar">
+   <min_max_values max_val="11" min_val="0"/>
+   <inquiry_value value="ffffffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="66" param_group="ungrouped" param_io="io" param_name="frame_rate" param_type="uint16" plotted="false" size="scalar">
+   <inquiry_value value="ffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="79" param_group="ungrouped" param_io="io" param_name="min_y_scale" param_type="uint16" plotted="false" size="scalar">
+   <min_max_values max_val="2047" min_val="0"/>
+   <inquiry_value value="ffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="59" param_group="ungrouped" param_io="io" param_name="max_y_scale" param_type="uint16" plotted="false" size="scalar">
+   <min_max_values max_val="2047" min_val="0"/>
+   <inquiry_value value="ffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="30" param_group="ungrouped" param_io="io" param_name="acquisition_offset" param_type="float" plotted="false" size="scalar">
+   <inquiry_value value="ffffffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="63" param_group="ungrouped" param_io="io" param_name="downconversion_mode" param_type="enum" plotted="false" size="scalar">
+   <available_set size="3">DCM_DISABLE
+0
+DCM_REAL_ENVELOP
+1
+DCM_CPLX_ENVELOP
+2</available_set>
+   <values size="1">DCM_DISABLE</values>
+  </parameter>
+  <parameter command_string="69" param_group="ungrouped" param_io="io" param_name="slow_time_gain" param_type="uint16" plotted="false" size="scalar">
+   <min_max_values max_val="255" min_val="1"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="6D" param_group="ungrouped" param_io="io" param_name="fast_time_gain" param_type="uint16" plotted="false" size="scalar">
+   <inquiry_value value="ffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="65" param_group="ungrouped" param_io="io" param_name="elaboration_mode" param_type="enum" plotted="false" size="scalar">
+   <available_set size="4">ELAB_RAW
+0
+ELAB_MTI
+1
+ELAB_MTI_ENVELOP
+2
+ELAB_MTI_MASKED
+3</available_set>
+   <values size="1">ELAB_RAW</values>
+  </parameter>
+  <parameter command_string="50" param_group="ungrouped" param_io="io" param_name="persistence" param_type="uint8" plotted="false" size="scalar">
+   <min_max_values max_val="254" min_val="0"/>
+   <inquiry_value value="ff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="44" param_group="ungrouped" param_io="io" param_name="distance_tolerance" param_type="float" plotted="false" size="scalar">
+   <min_max_values max_val="10" min_val="0"/>
+   <inquiry_value value="ffffffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="45" param_group="ungrouped" param_io="output" param_name="detection" param_type="float" plotted="false" size="scalar">
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="4D" param_group="ungrouped" param_io="io" param_name="nvm_storage" param_type="enum" plotted="false" size="scalar">
+   <available_set size="3">LOAD_STORED
+0
+SAVE_CURRENT
+1
+CLEAN_NVM
+2</available_set>
+   <values size="1">LOAD_STORED</values>
+  </parameter>
+  <parameter command_string="01[0]" param_group="ungrouped" param_io="output" param_name="version_reserved" param_type="uint16" plotted="false" size="scalar">
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="01[1]" param_group="ungrouped" param_io="output" param_name="version_hw" param_type="uint16" plotted="false" size="scalar">
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="01[2]" param_group="ungrouped" param_io="output" param_name="version_sw" param_type="uint32" plotted="false" size="scalar">
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="6C" param_group="ungrouped" param_io="io" param_name="declutter_length" param_type="uint16" plotted="false" size="scalar">
+   <inquiry_value value="ffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="6E" param_group="ungrouped" param_io="io" param_name="snr0" param_type="float" plotted="false" size="scalar">
+   <inquiry_value value="ffffffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="2C" param_group="ungrouped" param_io="io" param_name="snr1" param_type="float" plotted="false" size="scalar">
+   <inquiry_value value="ffffffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="2D" param_group="ungrouped" param_io="io" param_name="snr2" param_type="float" plotted="false" size="scalar">
+   <inquiry_value value="ffffffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="5F" param_group="ungrouped" param_io="io" param_name="snr3" param_type="float" plotted="false" size="scalar">
+   <inquiry_value value="ffffffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="31" param_group="ungrouped" param_io="io" param_name="snr_range0" param_type="float" plotted="false" size="scalar">
+   <min_max_values max_val="11" min_val="0"/>
+   <inquiry_value value="ffffffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="32" param_group="ungrouped" param_io="io" param_name="snr_range1" param_type="float" plotted="false" size="scalar">
+   <inquiry_value value="ffffffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="33" param_group="ungrouped" param_io="io" param_name="snr_range3" param_type="float" plotted="false" size="scalar">
+   <inquiry_value value="ffffffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="34" param_group="ungrouped" param_io="io" param_name="snr_pwr0" param_type="float" plotted="false" size="scalar">
+   <inquiry_value value="ffffffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="35" param_group="ungrouped" param_io="io" param_name="snr_pwr1" param_type="float" plotted="false" size="scalar">
+   <inquiry_value value="ffffffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="36" param_group="ungrouped" param_io="io" param_name="snr_pwr2" param_type="float" plotted="false" size="scalar">
+   <inquiry_value value="ffffffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="71" param_group="ungrouped" param_io="io" param_name="decimation_factor" param_type="uint8" plotted="false" size="scalar">
+   <min_max_values max_val="8" min_val="1"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="74" param_group="ungrouped" param_io="io" param_name="threshold" param_type="float" plotted="false" size="scalar">
+   <inquiry_value value="ffffffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="06[0]" param_group="ungrouped" param_io="io" param_name="led_control" param_type="enum" plotted="false" size="scalar">
+   <available_set size="2">LED_INTERNAL
+0
+LED_OVERRIDE
+1</available_set>
+   <values size="1">LED_INTERNAL</values>
+  </parameter>
+  <parameter command_string="06[1]" param_group="ungrouped" param_io="io" param_name="led_control_red" param_type="enum" plotted="false" size="scalar">
+   <available_set size="2">RED_DISABLE
+0
+RED_ENABLE
+1</available_set>
+   <values size="1">RED_DISABLE</values>
+  </parameter>
+  <parameter command_string="06[2]" param_group="ungrouped" param_io="io" param_name="led_control_green" param_type="enum" plotted="false" size="scalar">
+   <available_set size="2">GREEN_ENABLE
+0
+GREEN_DISABLE
+1</available_set>
+   <values size="1">GREEN_ENABLE</values>
+  </parameter>
+  <parameter command_string="06[3]" param_group="ungrouped" param_io="io" param_name="led_control_blue" param_type="enum" plotted="false" size="scalar">
+   <available_set size="2">BLUE_DISABLE
+0
+BLUE_ENABLE
+1</available_set>
+   <values size="1">BLUE_DISABLE</values>
+  </parameter>
+  <parameter command_string="07[0]" param_group="ungrouped" param_io="output" param_name="info_reserved" param_type="uint8" plotted="false" size="scalar">
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="07[1]" param_group="ungrouped" param_io="output" param_name="info_bin_resolution" param_type="float" plotted="false" size="scalar">
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="02" param_group="ungrouped" param_io="output" param_name="serial_uid" param_type="uint8" plotted="false" size="scalar">
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="76" param_group="ungrouped" param_io="io" param_name="prf_divider" param_type="uint8" plotted="false" size="scalar">
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="7A" param_group="ungrouped" param_io="input" param_name="snapshot" param_type="void" plot_type="undefined" plotted="true" size="scalar"/>
+  <parameter command_string="4B" param_group="ungrouped" param_io="input" param_name="tracker_enable" param_type="void" plotted="false" size="scalar"/>
+  <parameter command_string="56" param_group="ungrouped" param_io="io" param_name="tracker_speed_uncertainty" param_type="float" plotted="false" size="scalar">
+   <inquiry_value value="ffffffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="53" param_group="ungrouped" param_io="io" param_name="tracker_position_uncertainty" param_type="float" plotted="false" size="scalar">
+   <inquiry_value value="ffffffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="41" param_group="ungrouped" param_io="io" param_name="tracker_acceleration_uncertainty" param_type="float" plotted="false" size="scalar">
+   <inquiry_value value="ffffffff"/>
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="61" param_group="ungrouped" param_io="output" param_name="last_noise" param_type="uint32" plotted="false" size="scalar">
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="4C[0]" param_group="ungrouped" param_io="io" param_name="xtalk_comp_iter" param_type="uint8" plotted="false" size="scalar">
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="4C[1]" param_group="ungrouped" param_io="io" param_name="xtalk_comp_reference_size" param_type="uint16" plotted="false" size="scalar">
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="4C[2]" param_group="ungrouped" param_io="io" param_name="xtalk_comp_gain" param_type="float" plotted="false" size="scalar">
+   <values size="0"></values>
+  </parameter>
+  <parameter command_string="62" param_group="ungrouped" param_io="input" param_name="misc" param_type="uint8" plotted="false" size="scalar">
+   <inquiry_value value="ff"/>
+   <values size="0"></values>
+  </parameter>
+ </parameter_list>
+ <antennas count="2">
+  <antenna delay="0" loss="0" model_file="" name="Tx" position_x="0" position_y="0" position_z="0" rotation_phi="0" rotation_theta="0"/>
+  <antenna delay="0" loss="0" model_file="" name="Rx" position_x="0" position_y="0" position_z="0" rotation_phi="0" rotation_theta="0"/>
+ </antennas>
+ <init_parameters count="0"/>
+ <acquisition_parameters count="0"/>
+ <post_acquisition_parameters count="0"/>
+ <init_scripts count="0"/>
+ <acquisition_scripts count="0"/>
+ <post_acquisition_scripts count="0"/>
+ <serial_port_configuration baud="115200" databits="8" description="" flowcontrol="No Flow Control" manufacturer="" parity="No Parity" productid="-1" serial_number="" stopbits="1 Stopbit" vendorid="-1"/>
+</ARIA_Radar_Module>
