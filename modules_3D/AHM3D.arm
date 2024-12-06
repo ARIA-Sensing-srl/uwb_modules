@@ -2,52 +2,58 @@
  <parameter_list count="36" expected_moduleid_value="0000d0a3000000" inquiry_instanceid_command="0d" inquiry_moduleid_command="01">
   <parameter command_string="73" param_group="ungrouped" param_io="input" param_name="start" param_type="void" plotted="false" size="scalar"/>
   <parameter command_string="6f" param_group="ungrouped" param_io="input" param_name="stop" param_type="void" plotted="false" size="scalar"/>
-  <parameter command_string="64[0]" param_group="ungrouped" param_io="output" param_name="data_h0" param_type="uint16" plot_type="undefined" plotted="true" size="scalar">
+  <parameter command_string="64[0]" param_group="ungrouped" param_io="output" param_name="data_h0" param_type="uint16" plotted="false" size="scalar">
    <inquiry_value value="ff00"/>
    <values size="1">0</values>
   </parameter>
-  <parameter command_string="64[1]" param_group="ungrouped" param_io="output" param_name="data_h1" param_type="uint16" plot_type="undefined" plotted="true" size="scalar">
+  <parameter command_string="64[1]" param_group="ungrouped" param_io="output" param_name="data_h1" param_type="uint16" plotted="false" size="scalar">
    <values size="0"></values>
   </parameter>
-  <parameter command_string="64[2]" param_group="ungrouped" param_io="output" param_name="data_h2" param_type="uint16" plot_type="undefined" plotted="true" size="scalar">
+  <parameter command_string="64[2]" param_group="ungrouped" param_io="output" param_name="data_h2" param_type="uint16" plotted="false" size="scalar">
    <values size="0"></values>
   </parameter>
-  <parameter command_string="64[3]" param_group="ungrouped" param_io="output" param_name="data_payload" param_type="uint8" plotted="false" size="ndarray">
+  <parameter command_string="64[3]" param_group="ungrouped" param_io="output" param_name="data_payload" param_type="uint8" plotted="false" size="scalar">
    <values size="0"></values>
   </parameter>
   <parameter command_string="70" param_group="ungrouped" param_io="io" param_name="txpower" param_type="uint8" plotted="false" size="scalar">
+   <min_max_values max_val="7" min_val="0"/>
    <inquiry_value value="ff"/>
-   <values size="1">0</values>
+   <values size="1">3</values>
   </parameter>
-  <parameter command_string="78" param_group="ungrouped" param_io="io" param_name="xmin" param_type="float" plot_type="undefined" plotted="true" size="scalar">
+  <parameter command_string="78" param_group="ungrouped" param_io="io" param_name="xmin" param_type="float" plotted="false" size="scalar">
+   <min_max_values max_val="10" min_val="0"/>
    <inquiry_value value="ffffffff"/>
    <values size="1">0</values>
   </parameter>
-  <parameter command_string="58" param_group="ungrouped" param_io="io" param_name="xmax" param_type="float" plot_type="undefined" plotted="true" size="scalar">
+  <parameter command_string="58" param_group="ungrouped" param_io="io" param_name="xmax" param_type="float" plotted="false" size="scalar">
+   <min_max_values max_val="10" min_val="0"/>
    <inquiry_value value="ffffffff"/>
-   <values size="1">1</values>
+   <values size="1">5</values>
   </parameter>
-  <parameter command_string="30" param_group="ungrouped" param_io="io" param_name="offset" param_type="enum" plot_type="undefined" plotted="true" size="scalar">
-   <available_set size="0"></available_set>
-   <values size="0"></values>
+  <parameter command_string="30" param_group="ungrouped" param_io="io" param_name="offset" param_type="float" plotted="false" size="scalar">
+   <min_max_values max_val="10" min_val="0"/>
+   <values size="1">0</values>
   </parameter>
-  <parameter command_string="69" param_group="ungrouped" param_io="io" param_name="iterations" param_type="int32" plotted="false" size="scalar">
-   <inquiry_value value="ffff0000"/>
-   <values size="1">10</values>
-  </parameter>
-  <parameter command_string="6c" param_group="ungrouped" param_io="io" param_name="declutter" param_type="uint16" plot_type="undefined" plotted="true" size="scalar">
+  <parameter command_string="69" param_group="ungrouped" param_io="io" param_name="iterations" param_type="int16" plotted="false" size="scalar">
    <inquiry_value value="ffff"/>
    <values size="1">10</values>
   </parameter>
-  <parameter command_string="65" param_group="ungrouped" param_io="io" param_name="elaboration" param_type="uint8" plot_type="undefined" plotted="true" size="scalar">
-   <inquiry_value value="ff"/>
-   <values size="0"></values>
+  <parameter command_string="6c" param_group="ungrouped" param_io="io" param_name="declutter" param_type="uint16" plotted="false" size="scalar">
+   <min_max_values max_val="5000" min_val="1"/>
+   <values size="1">10</values>
+  </parameter>
+  <parameter command_string="65" param_group="ungrouped" param_io="io" param_name="elaboration" param_type="enum" plotted="false" size="scalar">
+   <available_set size="2">RAW_DATA
+0
+MTI
+1</available_set>
+   <values size="1">RAW_DATA</values>
   </parameter>
   <parameter command_string="68[0]" param_group="ungrouped" param_io="io" param_name="opt_proc_0" param_type="uint8" plot_type="undefined" plotted="true" size="scalar">
    <inquiry_value value="00"/>
    <values size="0"></values>
   </parameter>
-  <parameter command_string="68[1]" param_group="ungrouped" param_io="io" param_name="opt_proc_1" param_type="uint8" plot_type="undefined" plotted="true" size="scalar">
+  <parameter command_string="68[1]" param_group="ungrouped" param_io="io" param_name="opt_proc_1" param_type="uint8" plotted="false" size="scalar">
    <values size="0"></values>
   </parameter>
   <parameter command_string="01[0]" param_group="ungrouped" param_io="output" param_name="version_cid" param_type="uint16" plotted="false" size="scalar">
@@ -56,13 +62,14 @@
   <parameter command_string="01[1]" param_group="ungrouped" param_io="output" param_name="version_hwcode" param_type="uint16" plotted="false" size="scalar">
    <values size="0"></values>
   </parameter>
-  <parameter command_string="01[2]" param_group="ungrouped" param_io="output" param_name="version_id0" param_type="uint8" plot_type="undefined" plotted="true" size="scalar">
+  <parameter command_string="01[2]" param_group="ungrouped" param_io="output" param_name="version_id0" param_type="uint8" plotted="false" size="scalar">
    <values size="0"></values>
   </parameter>
   <parameter command_string="01[3]" param_group="ungrouped" param_io="output" param_name="version_id1" param_type="uint16" plotted="false" size="scalar">
    <values size="0"></values>
   </parameter>
   <parameter command_string="24" param_group="ungrouped" param_io="io" param_name="data channel" param_type="uint8" plotted="false" size="scalar">
+   <min_max_values max_val="15" min_val="0"/>
    <inquiry_value value="ff"/>
    <values size="1">0</values>
   </parameter>
@@ -70,45 +77,56 @@
    <inquiry_value value="ff00"/>
    <values size="1">0</values>
   </parameter>
-  <parameter command_string="07[1]" param_group="ungrouped" param_io="output" param_name="data_mult_h1" param_type="uint16" plot_type="undefined" plotted="true" size="scalar">
+  <parameter command_string="07[1]" param_group="ungrouped" param_io="output" param_name="data_mult_h1" param_type="uint16" plotted="false" size="scalar">
    <values size="0"></values>
   </parameter>
   <parameter command_string="07[2]" param_group="ungrouped" param_io="output" param_name="data_mult_h2" param_type="uint16" plotted="false" size="scalar">
    <values size="0"></values>
   </parameter>
-  <parameter command_string="07[3]" param_group="ungrouped" param_io="output" param_name="data_mult_payload" param_type="uint8" plotted="false" size="ndarray">
+  <parameter command_string="07[3]" param_group="ungrouped" param_io="output" param_name="data_mult_payload" param_type="uint8" plotted="false" size="scalar">
    <values size="0"></values>
   </parameter>
-  <parameter command_string="08" param_group="ungrouped" param_io="input" param_name="sequence" param_type="uint8" plotted="false" size="ndarray">
+  <parameter command_string="08" param_group="ungrouped" param_io="input" param_name="sequence" param_type="uint8" plotted="false" size="scalar">
    <inquiry_value value="ff"/>
    <values size="0"></values>
   </parameter>
-  <parameter command_string="0A" param_group="ungrouped" param_io="io" param_name="data format" param_type="uint8" plotted="false" size="scalar">
-   <inquiry_value value="ff"/>
-   <values size="0"></values>
+  <parameter command_string="0A" param_group="ungrouped" param_io="io" param_name="data format" param_type="enum" plotted="false" size="scalar">
+   <available_set size="5">Q7
+0
+Q15
+1
+Q31
+2
+F32
+3
+F16
+4</available_set>
+   <values size="1">F32</values>
   </parameter>
-  <parameter command_string="0b" param_group="ungrouped" param_io="io" param_name="frequency carrier" param_type="uint16" plot_type="undefined" plotted="true" size="scalar">
+  <parameter command_string="0b" param_group="ungrouped" param_io="io" param_name="frequency carrier" param_type="uint16" plotted="false" size="scalar">
    <inquiry_value value="ffff"/>
-   <values size="1">0</values>
+   <values size="1">8064</values>
   </parameter>
   <parameter command_string="0c" param_group="ungrouped" param_io="io" param_name="bandwidth" param_type="uint16" plotted="false" size="scalar">
    <inquiry_value value="ffff"/>
-   <values size="1">0</values>
+   <values size="1">1075</values>
   </parameter>
-  <parameter command_string="0d" param_group="ungrouped" param_io="input" param_name="code" param_type="int8" plot_type="undefined" plotted="true" size="scalar">
+  <parameter command_string="0d" param_group="ungrouped" param_io="input" param_name="code" param_type="int8" plotted="false" size="scalar">
    <values size="0"></values>
   </parameter>
-  <parameter command_string="0e[0]" param_group="ungrouped" param_io="io" param_name="gain_0" param_type="uint16" plot_type="undefined" plotted="true" size="scalar">
+  <parameter command_string="0e[0]" param_group="ungrouped" param_io="io" param_name="gain_i" param_type="uint16" plotted="false" size="scalar">
+   <min_max_values max_val="33" min_val="0"/>
    <inquiry_value value="ff00"/>
-   <values size="1">0</values>
+   <values size="1">7</values>
   </parameter>
-  <parameter command_string="0e[1]" param_group="ungrouped" param_io="io" param_name="gain_1" param_type="uint16" plot_type="undefined" plotted="true" size="scalar">
-   <values size="1">0</values>
+  <parameter command_string="0e[1]" param_group="ungrouped" param_io="io" param_name="gain_q" param_type="uint16" plotted="false" size="scalar">
+   <min_max_values max_val="33" min_val="0"/>
+   <values size="1">7</values>
   </parameter>
-  <parameter command_string="05" param_group="ungrouped" param_io="output" param_name="sampling rate" param_type="uint16" plot_type="undefined" plotted="true" size="scalar">
+  <parameter command_string="05" param_group="ungrouped" param_io="output" param_name="sampling rate" param_type="uint16" plotted="false" size="scalar">
    <values size="0"></values>
   </parameter>
-  <parameter command_string="0f[0]" param_group="ungrouped" param_io="output" param_name="get_image_h0" param_type="uint16" plot_type="undefined" plotted="true" size="scalar">
+  <parameter command_string="0f[0]" param_group="ungrouped" param_io="output" param_name="get_image_h0" param_type="uint16" plotted="false" size="scalar">
    <values size="0"></values>
   </parameter>
   <parameter command_string="0f[1]" param_group="ungrouped" param_io="output" param_name="get_image_h1" param_type="uint16" plotted="false" size="scalar">
@@ -117,16 +135,20 @@
   <parameter command_string="0f[2]" param_group="ungrouped" param_io="output" param_name="get_image_h2" param_type="uint16" plotted="false" size="scalar">
    <values size="0"></values>
   </parameter>
-  <parameter command_string="0f[3]" param_group="ungrouped" param_io="output" param_name="get_image_payload" param_type="uint8" plot_type="undefined" plotted="true" size="ndarray">
+  <parameter command_string="0f[3]" param_group="ungrouped" param_io="output" param_name="get_image_payload" param_type="uint8" plotted="false" size="scalar">
    <values size="0"></values>
   </parameter>
  </parameter_list>
  <antennas count="0"/>
- <init_parameters count="0"/>
- <acquisition_parameters count="0"/>
+ <init_parameters count="1">
+  <command order="0" param_id="0"/>
+ </init_parameters>
+ <acquisition_parameters count="1">
+  <command order="0" param_id="23"/>
+ </acquisition_parameters>
  <post_acquisition_parameters count="0"/>
  <init_scripts count="0"/>
  <acquisition_scripts count="0"/>
  <post_acquisition_scripts count="0"/>
- <serial_port_configuration baud="115200" databits="8" description="" flowcontrol="No Flow Control" manufacturer="" parity="No Parity" productid="6001" serial_number="" stopbits="1 Stopbit" vendorid="403"/>
+ <serial_port_configuration baud="921600" databits="8" description="" flowcontrol="No Flow Control" manufacturer="" parity="No Parity" productid="6014" serial_number="" stopbits="1 Stopbit" vendorid="403"/>
 </ARIA_Radar_Module>
