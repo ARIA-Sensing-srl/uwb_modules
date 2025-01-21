@@ -1,0 +1,137 @@
+<ARIA_Radar_Device radar_module_name="AHM3D.ard" xml_dataformat="0.1.0">
+ <radar_device display_name="AHM3D" fixed_comport="false" fixed_id="false" id="ffffffff" port_name="" radar_module="AHM3D.arm">
+  <actual_params count="31">
+   <parameter command_string="73" name_compound="false" octave_alias="start" param_group="ungrouped" param_io="input" param_name="start" param_type="void" plot_type="plot" plotted="true" size="scalar"/>
+   <parameter command_string="6f" name_compound="false" octave_alias="stop" param_group="ungrouped" param_io="input" param_name="stop" param_type="void" plot_type="undefined" plotted="true" size="scalar"/>
+   <parameter command_string="64[0]" param_group="ungrouped" param_io="output" param_name="data_h0" param_type="uint16" plot_type="plot" plotted="true" size="scalar">
+    <inquiry_value value="ff00"/>
+    <values size="1">0</values>
+   </parameter>
+   <parameter command_string="64[1]" param_group="ungrouped" param_io="output" param_name="data_h1" param_type="uint16" plot_type="plot" plotted="true" size="scalar">
+    <values size="0"></values>
+   </parameter>
+   <parameter command_string="64[2]" param_group="ungrouped" param_io="output" param_name="data_h2" param_type="uint16" plotted="false" size="scalar">
+    <values size="0"></values>
+   </parameter>
+   <parameter command_string="64[3]" param_group="ungrouped" param_io="output" param_name="data_payload" param_type="uint8" plotted="false" size="scalar">
+    <values size="0"></values>
+   </parameter>
+   <parameter command_string="70" name_compound="false" octave_alias="txPwr" param_group="ungrouped" param_io="io" param_name="txpower" param_type="uint8" plotted="false" size="scalar">
+    <min_max_values max_val="7" min_val="0"/>
+    <inquiry_value value="ff"/>
+    <values size="1">0</values>
+   </parameter>
+   <parameter command_string="78" name_compound="false" octave_alias="xmin" param_group="ungrouped" param_io="io" param_name="xmin" param_type="float" plotted="false" size="scalar">
+    <min_max_values max_val="40" min_val="-2"/>
+    <inquiry_value value="ffffffff"/>
+    <values size="1">0</values>
+   </parameter>
+   <parameter command_string="58" name_compound="false" octave_alias="xmax" param_group="ungrouped" param_io="io" param_name="xmax" param_type="float" plotted="false" size="scalar">
+    <min_max_values max_val="40" min_val="-2"/>
+    <inquiry_value value="ffffffff"/>
+    <values size="1">1</values>
+   </parameter>
+   <parameter command_string="30" name_compound="false" octave_alias="offset" param_group="ungrouped" param_io="io" param_name="offset" param_type="float" plot_type="plot" plotted="true" size="scalar">
+    <min_max_values max_val="2" min_val="-2"/>
+    <values size="1">0</values>
+   </parameter>
+   <parameter command_string="69" name_compound="false" octave_alias="iterations" param_group="ungrouped" param_io="io" param_name="iterations" param_type="uint16" plot_type="undefined" plotted="true" size="scalar">
+    <inquiry_value value="ffff"/>
+    <values size="1">10</values>
+   </parameter>
+   <parameter command_string="6c" name_compound="false" octave_alias="declutter" param_group="ungrouped" param_io="io" param_name="declutter" param_type="uint16" plotted="false" size="scalar">
+    <min_max_values max_val="1000" min_val="1"/>
+    <values size="1">10</values>
+   </parameter>
+   <parameter command_string="65" name_compound="false" octave_alias="elaboration" param_group="ungrouped" param_io="io" param_name="elaboration" param_type="enum" plotted="false" size="scalar">
+    <available_set size="2">raw
+0
+mti
+1</available_set>
+    <values size="1">mti</values>
+   </parameter>
+   <parameter command_string="62[0]" name_compound="false" octave_alias="opt_proc_0" param_group="ungrouped" param_io="io" param_name="opt_proc_0" param_type="uint8" plotted="false" size="scalar">
+    <inquiry_value value="00"/>
+    <values size="1">0</values>
+   </parameter>
+   <parameter command_string="62[1]" name_compound="false" octave_alias="opt_proc_1" param_group="ungrouped" param_io="io" param_name="opt_proc_1" param_type="uint8" plotted="false" size="scalar">
+    <values size="1">0</values>
+   </parameter>
+   <parameter command_string="01[0]" param_group="ungrouped" param_io="output" param_name="version_cid" param_type="uint16" plotted="false" size="scalar">
+    <values size="0"></values>
+   </parameter>
+   <parameter command_string="01[1]" param_group="ungrouped" param_io="output" param_name="version_hwcode" param_type="uint16" plotted="false" size="scalar">
+    <values size="0"></values>
+   </parameter>
+   <parameter command_string="01[2]" param_group="ungrouped" param_io="output" param_name="version_id0" param_type="uint8" plot_type="undefined" plotted="true" size="scalar">
+    <values size="0"></values>
+   </parameter>
+   <parameter command_string="01[3]" param_group="ungrouped" param_io="output" param_name="version_id1" param_type="uint16" plotted="false" size="scalar">
+    <values size="0"></values>
+   </parameter>
+   <parameter command_string="24" param_group="ungrouped" param_io="io" param_name="data channel" param_type="uint8" plotted="false" size="scalar">
+    <inquiry_value value="ff"/>
+    <values size="1">0</values>
+   </parameter>
+   <parameter command_string="07" name_compound="false" octave_alias="data_mult" param_group="ungrouped" param_io="io" param_name="data_mult" param_type="uint8" plot_type="undefined" plotted="true" size="scalar">
+    <inquiry_value value="ff"/>
+    <values size="1">0</values>
+   </parameter>
+   <parameter command_string="08" name_compound="false" octave_alias="sequence" param_group="ungrouped" param_io="io" param_name="sequence" param_type="uint8" plot_type="undefined" plotted="true" size="scalar">
+    <inquiry_value value="ff"/>
+    <values size="0"></values>
+   </parameter>
+   <parameter command_string="0A" name_compound="false" octave_alias="fmt" param_group="ungrouped" param_io="io" param_name="data format" param_type="enum" plotted="false" size="scalar">
+    <available_set size="5">Q7
+0
+Q15
+1
+Q31
+2
+F32
+3
+F16
+4</available_set>
+    <values size="1">Q7</values>
+   </parameter>
+   <parameter command_string="0b" name_compound="false" octave_alias="fcarrier" param_group="ungrouped" param_io="io" param_name="frequency carrier" param_type="uint16" plotted="false" size="scalar">
+    <min_max_values max_val="9500" min_val="6500"/>
+    <values size="1">8000</values>
+   </parameter>
+   <parameter command_string="0c" name_compound="false" octave_alias="bandwidth" param_group="ungrouped" param_io="io" param_name="bandwidth" param_type="uint16" plotted="false" size="scalar">
+    <min_max_values max_val="2000" min_val="500"/>
+    <values size="1">1500</values>
+   </parameter>
+   <parameter command_string="0d" name_compound="false" octave_alias="code" param_group="ungrouped" param_io="io" param_name="code" param_type="int8" plotted="false" size="scalar">
+    <values size="0"></values>
+   </parameter>
+   <parameter command_string="0e[0]" name_compound="false" octave_alias="VGAIGain" param_group="ungrouped" param_io="io" param_name="gain_0" param_type="uint16" plotted="false" size="scalar">
+    <min_max_values max_val="31" min_val="0"/>
+    <inquiry_value value="ffff"/>
+    <values size="1">0</values>
+   </parameter>
+   <parameter command_string="0e[1]" name_compound="false" octave_alias="VGAQGain" param_group="ungrouped" param_io="io" param_name="gain_1" param_type="uint16" plotted="false" size="scalar">
+    <min_max_values max_val="31" min_val="0"/>
+    <values size="1">0</values>
+   </parameter>
+   <parameter command_string="05" name_compound="false" octave_alias="fs" param_group="ungrouped" param_io="output" param_name="sampling rate" param_type="uint16" plotted="false" size="scalar">
+    <values size="0"></values>
+   </parameter>
+   <parameter command_string="0f" name_compound="false" octave_alias="get_image" param_group="ungrouped" param_io="output" param_name="get_image" param_type="uint8" plotted="false" size="scalar">
+    <values size="0"></values>
+   </parameter>
+   <parameter command_string="76" name_compound="false" octave_alias="get_ant_array" param_group="ungrouped" param_io="output" param_name="get_ant_array" param_type="uint8" plotted="false" size="scalar">
+    <values size="1">0</values>
+   </parameter>
+  </actual_params>
+  <init_scripts count="2">
+   <script filename="ahm3d_init.m" script_name="ahm3d_init.m"/>
+   <script filename="init_3D_local_reconstruction.m" script_name="init_3D_local_reconstruction.m"/>
+  </init_scripts>
+  <post_acquisition_scripts count="3">
+   <script filename="read_raw_data.m" script_name="read_raw_data.m"/>
+   <script filename="reconstruct_volume.m" script_name="reconstruct_volume.m"/>
+   <script filename="3d_max2d_split.m" script_name="3d_max2d_split.m"/>
+  </post_acquisition_scripts>
+ </radar_device>
+</ARIA_Radar_Device>
