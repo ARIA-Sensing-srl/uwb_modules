@@ -8,5 +8,6 @@ The new emPulse familiy and the current product line:
 3. AHM3D
 4. AHM2D
 5. AHM2DSC
+6. AHM2DL
 
    
