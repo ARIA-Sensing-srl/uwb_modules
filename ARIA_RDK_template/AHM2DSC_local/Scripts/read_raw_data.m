@@ -5,4 +5,6 @@
 
 var_immediate_inquiry("data_mult");
 [output_data_final] = msgdec_raw_data_multiple(data_mult);
-
+for N=1:length(AmplCorrection)
+	output_data_final(N,:) = output_data_final(N,:) * AmplCorrection(N);
+end

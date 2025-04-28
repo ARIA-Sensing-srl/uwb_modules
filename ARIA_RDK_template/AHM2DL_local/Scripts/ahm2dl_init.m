@@ -4,8 +4,8 @@
 % *************************************************
 
 
-#pkg load aria_uwb_toolbox
-addpath("func")
+pkg("load", "aria_uwb_toolbox");
+#addpath("func")
 printf("...Radar Device Initalization\n");
 
 #Stop radar 

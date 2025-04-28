@@ -3,7 +3,7 @@
 % Confidential-reserved
 % *************************************************
 
-pkg load aria_uwb_toolbox
+pkg("load", "aria_uwb_toolbox");
 printf("...Radar Device Initalization\n");
 
 #Stop radar 
