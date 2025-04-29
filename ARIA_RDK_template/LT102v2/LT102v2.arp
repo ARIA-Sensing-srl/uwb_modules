@@ -1,0 +1,23 @@
+<ARIA_Radar_Project xml_dataformat="0.1.0">
+ <leaf filename="LT102v2.arp" name="LT102v2" type="root">
+  <leaf filename="" name="Radar devices" type="folder">
+   <leaf filename="LT102V2.ard" name="LT102V2.ard" type="radardevice"/>
+  </leaf>
+  <leaf filename="" name="Scripts" type="folder">
+   <leaf filename="lt102init.m" name="lt102init.m" type="script"/>
+   <leaf filename="getData.m" name="getData.m" type="script"/>
+   <leaf filename="init2dplot.m" name="init2dplot.m" type="script"/>
+   <leaf filename="map2D.m" name="map2D.m" type="script"/>
+   <leaf filename="storeDetection.m" name="storeDetection.m" type="script"/>
+   <leaf filename="elab_main.m" name="elab_main.m" type="script"/>
+  </leaf>
+  <leaf filename="" name="Handler" type="folder">
+   <leaf filename="sched1.ars" name="sched1.ars" type="scheduler"/>
+  </leaf>
+  <leaf filename="" name="Radar Modules" type="folder">
+   <leaf filename="LT102V2.arm" name="LT102V2.arm" type="radarmodule"/>
+  </leaf>
+  <leaf filename="" name="Protocols" type="folder"/>
+  <leaf filename="" name="Antenna Models" type="folder"/>
+ </leaf>
+</ARIA_Radar_Project>

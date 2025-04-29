@@ -1,0 +1,9 @@
+clear path;
+base_root = "C:/A/ARIA_RDK_WIN/share/octave/9.4.0/m/";
+addpath(base_root);
+struct_pkg = "struct-1.0.18";
+addpath(sprintf("%s%s", base_root,struct_pkg));
+pkg  = "general";
+addpath(sprintf("%s%s", base_root,pkg));
+
+path

@@ -1,0 +1,8 @@
+<ARIA_Project_Scheduler>
+ <scheduler cycle_time="50" policy_on_error="halt_all" policy_on_timeout="continue_on_timeout" serial_timeout="2000">
+  <devices count="1">
+   <device device_name="LT102V2.ard"/>
+  </devices>
+  <scripts count="0"/>
+ </scheduler>
+</ARIA_Project_Scheduler>
