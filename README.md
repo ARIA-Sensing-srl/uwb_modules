@@ -23,6 +23,8 @@ the modules_xD folders contain the *.arm ("Aria radar module") definitions. This
 3. modules_3D
 	AHM3D.
 	
+The folders modules_xD/OctaveScripts contain scripts for native Octave environment (require aria_uwb_toolbox version >= 0.1.1)
+
 The folder ARIA_RDK_template contains example projects for acquire data from the modules (image or raw)
 
 .ARIA_RDK_template/AHM2D
