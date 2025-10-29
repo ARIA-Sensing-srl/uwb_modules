@@ -22,11 +22,10 @@ appopt_rec_algo_en = 1;
 
 
 #encode options into command's format
-opt_proc0=preproc_dcrem_en+2*preproc_corr_en+4*preproc_corr_matchfilt_en;
-
+opt_proc_0=preproc_dcrem_en+2*preproc_corr_en+4*preproc_corr_matchfilt_en;
+opt_proc_1 = appopt_det_algo+2*appopt_cplx_image+4*appopt_rec_algo_en;
 var_immediate_update("opt_proc_0");
-opt_proc1 = appopt_det_algo+2*appopt_cplx_image+4*appopt_rec_algo_en;
-var_immediate_update("opt_proc_1");
+
 #start operations
 pause(1);
 var_immediate_command("start");

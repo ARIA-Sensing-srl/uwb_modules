@@ -11,6 +11,8 @@ id = 0;
 var_immediate_command("stop");
 
 #USER PARAMETERS
+bwmode = 0;
+var_immediate_update("bwmode");
 fcarrier = 8064;			#carrier frequency MHz
 var_immediate_update("fcarrier");
 bandwidth = 1000;			#pulse bandwidth MHz
@@ -50,8 +52,8 @@ appopt_rec_algo_en = 0;			#enable embedded reconstruction algorithm
 
 #Encode parameters and send
 #encode processing option before send to serial interface
-opt_proc0=preproc_dcrem_en+2*preproc_corr_en+4*preproc_corr_matchfilt_en;
-opt_proc1 = appopt_det_algo+2*appopt_cplx_image+4*appopt_rec_algo_en;
+opt_proc_0=preproc_dcrem_en+2*preproc_corr_en+4*preproc_corr_matchfilt_en;
+opt_proc_1 = appopt_det_algo+2*appopt_cplx_image+4*appopt_rec_algo_en;
 var_immediate_update("opt_proc_0");
 
 %Encode scan sequence and send

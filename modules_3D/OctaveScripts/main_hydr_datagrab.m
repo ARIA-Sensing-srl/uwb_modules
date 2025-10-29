@@ -3,7 +3,7 @@
 % Confidential-reserved
 % *************************************************
 
-
+pkg load aria_uwb_toolbox
 close all;          % close all figures
 clear variables;    % clear all workspace variables
 clc;                % clear the command line
@@ -15,7 +15,7 @@ DEFINE_OCTAVE=1;
 
 pkg load instrument-control
 %init serial port
-board = serial("/dev/ttyUSB0");
+board = serial("/dev/ttyUSB1");
 set(board, 'baudrate', 921600);     % See List Below
 set(board, 'bytesize', 8);        % 5, 6, 7 or 8
 set(board, 'parity', 'n');        % 'n' or 'y'
@@ -49,6 +49,7 @@ iterations = []; #automatic selected accoring to the HW
 bw = 1000;
 declutter = 100;
 fcarrier = 8064e6;
+bwmode = 0;   #change max bandwidth 0: 1.3G, 1:1.8G
 
 #internal processing option
 preproc_dcrem_en = 1; #DC is removed before transferred to main processor
@@ -139,6 +140,14 @@ if (ret_code)
   fclose(board);
   return;
 end
+
+ret_code = set_bwmode(board,bwmode);
+if (ret_code)
+  fprintf("BWmode radar failed\n");
+  fclose(board);
+  return;
+end
+pause(0.5);
 
 
 [ret_code, fs] = get_adcfreq(board)

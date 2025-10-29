@@ -12,7 +12,7 @@ end
 #setup variables for reconstruction
 algo="DMAS_SR";
 RhoStep = 0.05;                 #Rho resoluton
-RhoRange = [1.0 4.0];           #Rho range
+RhoRange = [1.0 7.0];           #Rho range
 AzimStep = 5 * pi/180;         	#Azimuth resolution
 AzimRange = [-45 45] * pi/180; 	#Azimuth range
 

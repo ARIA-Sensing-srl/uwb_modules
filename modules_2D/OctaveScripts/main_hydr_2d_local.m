@@ -3,7 +3,7 @@
 % Confidential-reserved
 % *************************************************
 
-
+pkg load aria_uwb_toolbox
 close all;          % close all figures
 clear variables;    % clear all workspace variables
 clc;                % clear the command line
@@ -16,7 +16,7 @@ DEFINE_OCTAVE=1;
 C0 = 3e8;
 pkg load instrument-control
 %init serial port
-board = serial('/dev/ttyUSB0');
+board = serial('/dev/ttyUSB1');
 set(board, 'baudrate', 921600);     % See List Below
 set(board, 'bytesize', 8);        % 5, 6, 7 or 8
 set(board, 'parity', 'n');        % 'n' or 'y'
@@ -41,6 +41,7 @@ VGAQGain = 20;
 code = [1];
 txpower  = 7;
 
+
 #t / r (zero based)
 scan_sequence = [];
 
@@ -50,6 +51,7 @@ iterations = []; #autoselect
 bw = 1000;
 declutter = 100;
 fc = 8064e6;
+bwmode = 0;
 
 #internal processing option
 preproc_dcrem_en = 1; #DC is removed before transferred to main processor
@@ -61,8 +63,8 @@ appopt_rec_algo_en = 0;
 algo="DMAS_SR";
 
 
-RhoStep = 0.01;                  #Rho resoluton
-RhoRange = [0 2.0];              #Rho range
+RhoStep = 0.05;                  #Rho resoluton
+RhoRange = [0 5.0];              #Rho range
 
 AzimStep = 5 * pi/180;         #Theta resolution
 AzimRange = [-45 45] * pi/180; #Theta range
@@ -161,6 +163,14 @@ if (ret_code)
   fclose(board);
   return;
 end
+
+ret_code = set_bwmode(board,bwmode);
+if (ret_code)
+  fprintf("BWmode radar failed\n");
+  fclose(board);
+  return;
+end
+pause(0.5);
 
 [ret_code, fc] = set_carrier_frequency(board,fc/1e6);
 if (ret_code)
@@ -329,6 +339,12 @@ figure;
 failcnt = 0;
 failcntlimit = 5;
 
+isDMAS = 1;
+if(isempty(strfind(algo, "DMAS")))
+  isDMAS = 0;
+endif
+
+
 while(kbhit(1)==27)
   pause(0.005);
 end
@@ -354,6 +370,13 @@ while ((failcnt < failcntlimit))
   endfor
 
   output_image = imageReconstruction(hradar,data, AzimBase, Rhobase ,algo);
+
+  if (isDMAS)
+    output_image  = real(output_image );
+  else
+    output_image  = abs(output_image );
+  endif
+
   imagesc(AzimBase, Rhobase, (abs(output_image)').^2);
   xlabel("Azimuth");
   ylabel("Rho");

@@ -3,7 +3,7 @@
 % Confidential-reserved
 % *************************************************
 
-
+pkg load aria_uwb_toolbox
 close all;          % close all figures
 clear variables;    % clear all workspace variables
 clc;                % clear the command line
@@ -16,7 +16,7 @@ DEFINE_OCTAVE=1;
 C0 = 3e8;
 pkg load instrument-control
 %init serial port
-board = serial('/dev/ttyUSB0');
+board = serial('/dev/ttyUSB1');
 set(board, 'baudrate', 921600);     % See List Below
 set(board, 'bytesize', 8);        % 5, 6, 7 or 8
 set(board, 'parity', 'n');        % 'n' or 'y'
@@ -48,8 +48,9 @@ fmt = 4; #0:Q7, 1:Q15, 2:Q31, 3:F32, 4:F16
 elabtype = 1; #0 raw, 1 mti
 iterations = 10000;
 bw = 1000;
-declutter = 100;
+declutter = 500;
 fc = 8064e6;
+bwmode = 0;   #change max bandwidth 0: 1.3G, 1:1.8G
 
 #internal processing option
 preproc_dcrem_en = 1; #DC is removed before transferred to main processor
@@ -63,8 +64,7 @@ algo="DMAS_SR";
 
 RhoStep = 0.02;                  #Rho resoluton
 RhoRange = [0.5 5.0];              #Rho range
-##RhoRange = [0.5 5.5];              #Rho range
-ZenithStep = 2.5 * pi/180;         #
+ZenithStep = 5 * pi/180;         #
 ZenithRange = [45 135] * pi/180; #center is 90° +-45°
 
 AzimStep = 5 * pi/180;         #Theta resolution
@@ -145,6 +145,14 @@ if (ret_code)
   fclose(board);
   return;
 end
+
+ret_code = set_bwmode(board,bwmode);
+if (ret_code)
+  fprintf("BWmode radar failed\n");
+  fclose(board);
+  return;
+end
+pause(0.5);
 
 [ret_code, fc] = set_carrier_frequency(board,fc/1e6);
 if (ret_code)
@@ -317,10 +325,15 @@ while(kbhit(1)==27)
   pause(0.005);
 end
 
+isDMAS = 1;
+if (isempty(strfind(algo, "DMAS")))
+  isDMAS = 0;
+endif
+
 
 while ((failcnt < failcntlimit))
   pause(0.005);
-##  iter -= 1;
+
   if (kbhit(1)==27)
 				break;
   end;
@@ -338,9 +351,15 @@ while ((failcnt < failcntlimit))
   endfor
 
   output_volume = imageReconstruction_3D(hradar,data, AzimBase, ZenithBase, Rhobase ,algo);
+
+  if (isDMAS)
+    output_volume  = real(output_volume );
+  else
+    output_volume  = abs(output_volume);
+  endif
+
   #plot
   #compound view
-  #imagesc(abs(output_volume(1:end,:)));
 
 
   #this section search the maximum amplitude inside the
@@ -355,7 +374,6 @@ while ((failcnt < failcntlimit))
 
   RI = maxRI(maxR2I(maxR3I), maxR3I);
   imgMax = squeeze(output_volume(RI, :,:));
-##  img2d = (sum(output_volume,3));
   img2d = squeeze(output_volume(:,:, maxR3I));
 
   subplot(1,2,1);
@@ -370,7 +388,6 @@ while ((failcnt < failcntlimit))
   xlabel("Azimuth");
 
   hold on;
-##  plot([1 size(img2d,2)], [RI RI], '-r', 'linewidth', 4);
   plot([AzimBase(1) AzimBase(end)]*180/pi, [Rhobase(RI) Rhobase(RI)], '-r', 'linewidth', 4);
   hold off;
   drawnow;

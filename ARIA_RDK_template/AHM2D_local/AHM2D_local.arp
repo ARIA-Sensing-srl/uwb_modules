@@ -7,7 +7,6 @@
    <leaf filename="ahm2d_init.m" name="ahm2d_init.m" type="script"/>
    <leaf filename="init_2D_local_reconstruction.m" name="init_2D_local_reconstruction.m" type="script"/>
    <leaf filename="reconstruct_image.m" name="reconstruct_image.m" type="script"/>
-   <leaf filename="init_2D_embed.m" name="init_2D_embed.m" type="script"/>
    <leaf filename="read_image.m" name="read_image.m" type="script"/>
    <leaf filename="read_raw_data.m" name="read_raw_data.m" type="script"/>
   </leaf>

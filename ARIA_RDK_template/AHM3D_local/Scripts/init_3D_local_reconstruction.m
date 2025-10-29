@@ -11,9 +11,9 @@ end
 
 #setup local variables
 algo="DMAS_SR";
-RhoStep = 0.02;                  	#Downrange resoluton
+RhoStep = 0.07;                  	#Downrange resoluton
 RhoRange = [0.5 5.0];              	#Downrange range
-ZenithStep = 2.5 * pi/180;         	#Zenithal angle resolution
+ZenithStep = 5 * pi/180;         	#Zenithal angle resolution
 ZenithRange = [45 135] * pi/180; 	#Zenithal angle range
 AzimStep = 5 * pi/180;         		#Aximuth angle resolution
 AzimRange = [-45 45] * pi/180; 		#Azimuth angle range

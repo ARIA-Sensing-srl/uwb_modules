@@ -10,14 +10,16 @@ printf("...Radar Device Initalization\n");
 var_immediate_command("stop");
 
 #USER configuration
-
+bwmode = 0;				#bandwisth range 0: 1.3G, 1:1.8G
+var_immediate_update("bwmode");
+pause(0.5);				#required for proper setup
 fcarrier = 8064;			#carrier frequency
 var_immediate_update("fcarrier");
 bandwidth = 1000;			#pulse bandwidth
 var_immediate_update("bandwidth");
 xmin = 1;				#minimum acquired distance
 var_immediate_update("xmin");
-xmax = 5;				#maximum acquired distance
+xmax = 4;				#maximum acquired distance
 var_immediate_update("xmax");
 offset = single(-1);			#acquisition offset
 var_immediate_update("offset");
@@ -49,8 +51,8 @@ appopt_rec_algo_en = 0;			#enable embedded reconstruction algorithm
 
 #Handle encoded parameters
 #encode processing option before send to serial interface
-opt_proc0=preproc_dcrem_en+2*preproc_corr_en+4*preproc_corr_matchfilt_en;
-opt_proc1 = appopt_det_algo+2*appopt_cplx_image+4*appopt_rec_algo_en;
+opt_proc_0=preproc_dcrem_en+2*preproc_corr_en+4*preproc_corr_matchfilt_en;
+opt_proc_1 = appopt_det_algo+2*appopt_cplx_image+4*appopt_rec_algo_en;
 var_immediate_update("opt_proc_0");
 
 %Encode scan sequence and send

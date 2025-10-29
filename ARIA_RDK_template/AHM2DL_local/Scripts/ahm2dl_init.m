@@ -3,7 +3,7 @@
 % Confidential-reserved
 % *************************************************
 
-
+#pkg load aria_uwb_toolbox
 pkg("load", "aria_uwb_toolbox");
 #addpath("func")
 printf("...Radar Device Initalization\n");
@@ -12,14 +12,15 @@ printf("...Radar Device Initalization\n");
 var_immediate_command("stop");
 
 #USER configuration
-
+bwmode = 0;				#bandiwth range 0: up to 1.3, 1: up to 1.8G
+var_immediate_update("bwmode");
 fcarrier = 8064;			#carrier frequency
 var_immediate_update("fcarrier");
 bandwidth = 1000;			#pulse bandwidth
 var_immediate_update("bandwidth");
 xmin = 1;				#minimum acquired distance
 var_immediate_update("xmin");
-xmax = 5;				#maximum acquired distance
+xmax = 4;				#maximum acquired distance
 var_immediate_update("xmax");
 offset = single(-1);			#acquisition offset
 var_immediate_update("offset");
@@ -61,11 +62,9 @@ appopt_rec_algo_en = 0;			#enable embedded reconstruction algorithm
 
 #Handle encoded parameters
 #encode processing option before send to serial interface
-opt_proc0=preproc_dcrem_en+2*preproc_corr_en+4*preproc_corr_matchfilt_en;
-
+opt_proc_0=preproc_dcrem_en+2*preproc_corr_en+4*preproc_corr_matchfilt_en;
+opt_proc_1 = appopt_det_algo+2*appopt_cplx_image+4*appopt_rec_algo_en;
 var_immediate_update("opt_proc_0");
-opt_proc1 = appopt_det_algo+2*appopt_cplx_image+4*appopt_rec_algo_en;
-var_immediate_update("opt_proc_1");
 
 %Encode scan sequence and send
 rxmask = 2.^scan_sequence(:,2);
