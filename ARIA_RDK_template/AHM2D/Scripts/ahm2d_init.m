@@ -19,7 +19,7 @@ bandwidth = 1000;			#pulse bandwidth
 var_immediate_update("bandwidth");
 xmin = 1;				#minimum acquired distance
 var_immediate_update("xmin");
-xmax = 4;				#maximum acquired distance
+xmax = 6;				#maximum acquired distance
 var_immediate_update("xmax");
 offset = single(-1);			#acquisition offset
 var_immediate_update("offset");

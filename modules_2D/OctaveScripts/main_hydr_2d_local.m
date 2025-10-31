@@ -377,7 +377,7 @@ while ((failcnt < failcntlimit))
     output_image  = abs(output_image );
   endif
 
-  imagesc(AzimBase, Rhobase, (abs(output_image)').^2);
+  imagesc(AzimBase, Rhobase, abs(output_image)');
   xlabel("Azimuth");
   ylabel("Rho");
 
