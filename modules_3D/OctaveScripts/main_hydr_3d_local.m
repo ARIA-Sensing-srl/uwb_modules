@@ -1,6 +1,8 @@
 % *************************************************
 % ARIA Sensing srl 2024
 % Confidential-reserved
+% The script configures the radar, and implements the beamforming algorithm locally,
+% searches for the maximum amplitude and extracts two slicing planes YZ and XY crossing the point of maximum amplitude
 % *************************************************
 
 pkg load aria_uwb_toolbox
@@ -17,11 +19,11 @@ C0 = 3e8;
 pkg load instrument-control
 %init serial port
 board = serial('/dev/ttyUSB1');
-set(board, 'baudrate', 921600);     % See List Below
-set(board, 'bytesize', 8);        % 5, 6, 7 or 8
-set(board, 'parity', 'n');        % 'n' or 'y'
-set(board, 'stopbits', 1);        % 1 or 2
-set(board, 'timeout', 0.1);     % 12.3 Seconds as an example here
+set(board, 'baudrate', 921600);     
+set(board, 'bytesize', 8);        
+set(board, 'parity', 'n');        
+set(board, 'stopbits', 1);        
+set(board, 'timeout', 0.1);     
 
 
 
@@ -34,41 +36,41 @@ srl_flush(board);
 fprintf('\t\t done \n');
 drawnow;
 
-xrange = [1 9];
-offset = -1;
-VGAIGain = 18;
-VGAQGain = 18;
-code = [1];
-txpower  = 7;
+xrange = [1 9];		#set the streams acquisition range (in meters)
+offset = -1;		#set the offset to apply to compensate the frame's initial position
+VGAIGain = 18;		#set the receiver stage gain (I channel)
+VGAQGain = 18;		#set the receiver stage gain (Q channel)
+code = [1];		#set the code, default setting is single pulse mode
+txpower  = 7;		#tx output power, allowed values span from 0-7
 
 #t / r (zero based)
-scan_sequence = [];
+scan_sequence = [];	#set antenna pairs for every frame. If empty, script automatic sets the correct sequence according to device model
 
-fmt = 4; #0:Q7, 1:Q15, 2:Q31, 3:F32, 4:F16
-elabtype = 1; #0 raw, 1 mti
-iterations = 10000;
-bw = 1000;
-declutter = 500;
-fc = 8064e6;
-bwmode = 0;   #change max bandwidth 0: 1.3G, 1:1.8G
+fmt = 4; 		#output data format used during transfer 0:Q7, 1:Q15, 2:Q31, 3:F32, 4:F16
+elabtype = 1;		#elaboration level required 0 raw, 1 mti
+iterations = 10000;	#number of integrations, if [], scripts automatically set according to the HW
+bw = 1000;		#pulse bandwidth in MHz
+declutter = 500;	#used if elabtype is 1, set the number of frame used by the adaptative declutter algorithm
+fc = 8064e6;		#carrier frequency
+bwmode = 0;   		#Change the maximum available pulse bandwidth: 0 for up to 1.3GHz, 1 for maximum bandwidth 1.8 GHz
 
 #internal processing option
-preproc_dcrem_en = 1; #DC is removed before transferred to main processor
-preproc_corr_en = 0;  #pulse correlator enable before transferred to main processor
-preproc_corr_matchfilt_en = 1;
-appopt_det_algo = 0;
-appopt_cplx_image = 0;
-appopt_rec_algo_en = 0;
-algo="DMAS_SR";
+preproc_dcrem_en = 1; 		#if set, removes DC component
+preproc_corr_en = 0;  		#if set, enables sequence correlator (used in multipulse mode)
+preproc_corr_matchfilt_en = 1;	#if set, enables matched filtering
+appopt_det_algo = 0;		#if set, enables embedded segmentation algorithm (limited support), used if appopt_rec_algo_en==1
+appopt_cplx_image = 0;		#if set, returns image as complex array
+appopt_rec_algo_en = 0;		#if set, enable embedded reconstruction algorithm
+algo="DMAS_SR";			#select the algorithm used for reconstruction DAS, DMAS, DAS_SR, DMAS_SR
 
 
-RhoStep = 0.02;                  #Rho resoluton
-RhoRange = [0.5 5.0];              #Rho range
-ZenithStep = 5 * pi/180;         #
-ZenithRange = [45 135] * pi/180; #center is 90° +-45°
+RhoStep = 0.02;                  #Downrange resolution
+RhoRange = [0.5 5.0];            #Downrange span in meters
+ZenithStep = 5 * pi/180;         #Zenithal angular resolution in radiants
+ZenithRange = [45 135] * pi/180; #Zenithal angle span in radiants
 
-AzimStep = 5 * pi/180;         #Theta resolution
-AzimRange = [-45 45] * pi/180; #Theta range
+AzimStep = 5 * pi/180;    		#Azimuthal angular resolution in radinats
+AzimRange = [-45 45] * pi/180; 		#Azimuthal angular span in radiants
 
 ##END PARAMETERS####################################
 

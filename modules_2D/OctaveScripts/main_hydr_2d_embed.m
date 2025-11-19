@@ -1,6 +1,7 @@
 % *************************************************
 % ARIA Sensing srl 2018
 % Confidential-reserved
+% This script configures the device and get the image reconstructed by the module
 % *************************************************
 
 pkg load aria_uwb_toolbox
@@ -16,12 +17,12 @@ DEFINE_OCTAVE=1;
 C0 = 3e8;
 pkg load instrument-control
 %init serial port
-board = serial('/dev/ttyUSB1');
-set(board, 'baudrate', 921600);     % See List Below
-set(board, 'bytesize', 8);        % 5, 6, 7 or 8
-set(board, 'parity', 'n');        % 'n' or 'y'
-set(board, 'stopbits', 1);        % 1 or 2
-set(board, 'timeout', 0.1);     % 12.3 Seconds as an example here
+board = serial('/dev/ttyUSB1');	
+set(board, 'baudrate', 921600);     
+set(board, 'bytesize', 8);        
+set(board, 'parity', 'n');        
+set(board, 'stopbits', 1);        
+set(board, 'timeout', 0.1);     
 
 
 
@@ -34,28 +35,28 @@ srl_flush(board);
 fprintf('\t\t done \n');
 drawnow;
 
-xrange = [0.5 4];
-offset = -1.0;
-VGAIGain = 18;
-VGAQGain = 18;
-code = [1];
-txpower  = 7;
+xrange = [0.5 4];	#set the streams acquisition range (in meters)
+offset = -1.0;		#set the offset to apply to compensate the frame's initial position
+VGAIGain = 18;		#set the receiver stage gain (I channel)
+VGAQGain = 18;		#set the receiver stage gain (Q channel)
+code = [1];		#set the code, default setting is single pulse mode
+txpower  = 7;		#tx output power, allowed values span from 0-7
 
 ###t / r
-scan_sequence = []; #if empty, script automatic sets the correct sequenc according to device model
+scan_sequence = []; 	#set antenna pairs for every frame. If empty, script automatic sets the correct sequence according to device model
 
-fmt = 4; #0:Q7, 1:Q15, 2:Q31, 3:F32, 4:F16
-elabtype = 1; #0 raw, 1 mti
-iterations = []; #autoselect
-bw = 1000;
-declutter = 100;
-fcarrier = 8064e6;
-bwmode = 0;
+fmt = 4; 		#output data format used during transfer 0:Q7, 1:Q15, 2:Q31, 3:F32, 4:F16
+elabtype = 1; 		#elaboration level required 0 raw, 1 mti
+iterations = []; 	#number of integrations, if [], scripts automatically set according to the HW
+bw = 1000;		#pulse bandwidth in MHz
+declutter = 100;	#used if elabtype is 1, set the number of frame used by the adaptative declutter algorithm
+fcarrier = 8064e6;	#carrier frequency
+bwmode = 0;		#Change the maximum available pulse bandwidth: 0 for up to 1.3GHz, 1 for maximum bandwidth 1.8 GHz
 
 #internal processing option
-preproc_dcrem_en = 1; #DC is removed before transferred to main processor
-preproc_corr_en = 0;  #pulse correlator enable before transferred to main processor
-preproc_corr_matchfilt_en = 1;
+preproc_dcrem_en = 1; 		#if set, removes DC component
+preproc_corr_en = 0;  		#if set, enables sequence correlator (used in multipulse mode)
+preproc_corr_matchfilt_en = 1;	#if set, enables matched filtering
 
 ##END PARAMETERS####################################
 
