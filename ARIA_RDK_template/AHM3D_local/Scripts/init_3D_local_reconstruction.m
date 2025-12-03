@@ -1,6 +1,7 @@
 % *************************************************
 % ARIA Sensing srl 2025
 % Confidential-reserved
+% this scrits set the parameter for local volume reconstruction, the script retrieve the antenna topology to perform the volume computation
 % *************************************************
 
 #verify existence of mandatory variables
@@ -19,7 +20,7 @@ AzimStep = 5 * pi/180;         		#Aximuth angle resolution
 AzimRange = [-45 45] * pi/180; 		#Azimuth angle range
 
 
-
+##END OF PARAMETERS#################################
 
 #Local initialization
 

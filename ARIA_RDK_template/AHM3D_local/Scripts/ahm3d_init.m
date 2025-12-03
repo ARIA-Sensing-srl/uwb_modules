@@ -1,6 +1,7 @@
 % *************************************************
 % ARIA Sensing srl 2025
 % Confidential-reserved
+% This script configure the device
 % *************************************************
 
 pkg("load", "aria_uwb_toolbox");
@@ -11,7 +12,7 @@ id = 0;
 var_immediate_command("stop");
 
 #USER PARAMETERS
-bwmode = 0;
+bwmode = 0;				#0: bandwidth max 1.3GHz, 1: bandwidth max 1.8 GHz
 var_immediate_update("bwmode");
 fcarrier = 8064;			#carrier frequency MHz
 var_immediate_update("fcarrier");
@@ -41,6 +42,8 @@ var_immediate_update("VGAQGain");
 scan_sequence = [1 1; 2 1;2 2; 1 2];	#antennas sequence [t r; t r; ...] zero based
 fmt = 4;				#data format (used for transfer) Q.7, Q.15, Q.32, F32, F16
 var_immediate_update("fmt");
+fps=15;
+var_immediate_update("fps");
 #preprocessing options
 preproc_dcrem_en = 1;			#execute DC suppression on raw data			
 preproc_corr_en = 0;			#execute correlation with expected codeword
@@ -49,6 +52,7 @@ appopt_det_algo = 0;			#enable detection algorithm
 appopt_cplx_image = 0;			#enable complex image calculation (default is pixel intensity)
 appopt_rec_algo_en = 0;			#enable embedded reconstruction algorithm
 
+##END OF PARAMETERS###########################
 
 #Encode parameters and send
 #encode processing option before send to serial interface

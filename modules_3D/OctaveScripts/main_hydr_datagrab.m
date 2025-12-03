@@ -16,12 +16,12 @@ DEFINE_OCTAVE=1;
 
 pkg load instrument-control
 %init serial port
-board = serial("/dev/ttyUSB1");
-set(board, 'baudrate', 921600);     
-set(board, 'bytesize', 8);        
-set(board, 'parity', 'n');        
-set(board, 'stopbits', 1);        
-set(board, 'timeout', 0.1);    
+board = serial("/dev/ttyUSB0");
+set(board, 'baudrate', 921600);
+set(board, 'bytesize', 8);
+set(board, 'parity', 'n');
+set(board, 'stopbits', 1);
+set(board, 'timeout', 0.1);
 
 
 

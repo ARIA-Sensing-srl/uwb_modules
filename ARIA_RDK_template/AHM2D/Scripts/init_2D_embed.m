@@ -1,6 +1,7 @@
 % *************************************************
 % ARIA Sensing srl 2025
 % Confidential-reserved
+% this script configures the device and enable the embedded reconstruction algorithm
 % *************************************************
 
 #verify existence of mandatory variables
@@ -20,7 +21,7 @@ appopt_det_algo = 0;
 appopt_cplx_image = 0;
 appopt_rec_algo_en = 1;
 
-
+#END OF PARAMETERS
 #encode options into command's format
 opt_proc_0=preproc_dcrem_en+2*preproc_corr_en+4*preproc_corr_matchfilt_en;
 opt_proc_1 = appopt_det_algo+2*appopt_cplx_image+4*appopt_rec_algo_en;

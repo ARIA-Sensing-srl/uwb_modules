@@ -40,6 +40,8 @@ var_immediate_update("VGAQGain");
 scan_sequence = [1 1; 2 1; 2 2; 1 2];	#antennas sequence [t r; t r; ...] zero based
 fmt = 4; 				#data format (used for transfer) Q.7, Q.15, Q.32, F32, F16
 var_immediate_update("fmt");
+fps=15;
+var_immediate_update("fps");
 #preprocessing options
 preproc_dcrem_en = 1;			#execute DC suppression on raw data
 preproc_corr_en = 0;			#execute correlation with expected codeword

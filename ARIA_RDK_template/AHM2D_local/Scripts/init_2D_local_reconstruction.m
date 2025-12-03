@@ -1,6 +1,7 @@
 % *************************************************
 % ARIA Sensing srl 2025
 % Confidential-reserved
+% The script sets the parameter for recontruct the image
 % *************************************************
 
 #verify existence of mandatory variables
@@ -16,6 +17,7 @@ RhoRange = [1.0 7.0];           #Rho range
 AzimStep = 5 * pi/180;         	#Azimuth resolution
 AzimRange = [-45 45] * pi/180; 	#Azimuth range
 
+##END OF PARAMETERS######################################
 
 #Local variable initialization
 get_antenna_config

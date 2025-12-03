@@ -1,6 +1,7 @@
 % *************************************************
 % ARIA Sensing srl 2025
 % Confidential-reserved
+% This script sets the parameter of the radar
 % *************************************************
 
 #pkg load aria_uwb_toolbox
@@ -51,6 +52,8 @@ scan_sequence = [...
 	];	#antennas sequence [t r; t r; ...] zero based
 fmt = 4; 				#data format (used for transfer) Q.7, Q.15, Q.32, F32, F16
 var_immediate_update("fmt");
+fps=15;
+var_immediate_update("fps");
 #preprocessing options
 preproc_dcrem_en = 1;			#execute DC suppression on raw data
 preproc_corr_en = 0;			#execute correlation with expected codeword
@@ -60,6 +63,7 @@ appopt_cplx_image = 0;			#enable complex image calculation (default is pixel int
 appopt_rec_algo_en = 0;			#enable embedded reconstruction algorithm
 
 
+##END OF PARAMETERS#############################
 #Handle encoded parameters
 #encode processing option before send to serial interface
 opt_proc_0=preproc_dcrem_en+2*preproc_corr_en+4*preproc_corr_matchfilt_en;
