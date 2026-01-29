@@ -10,22 +10,8 @@ The new emPulse familiy and the current product line:
 5. AHM2DSC
 6. AHM2DL
 
-the modules_xD folders contain the *.arm ("Aria radar module") definitions. This files must be included into the project file to communicate with the device
-
-Master branch is aligned with most recent version of the FW, check tags for support of previous versions
-
-1. modules_1D
-	LT102V2
-	LT103OEM
-
-2. modules_2D
-	AHM2D
-	AHM2DSC
-	AHM2DL
-3. modules_3D
-	AHM3D.
 	
-The folders modules_xD/OctaveScripts contain scripts for native Octave environment (require aria_uwb_toolbox version >= 0.1.1)
+The folders OctaveStandalone contain scripts for native Octave environment (require aria_uwb_toolbox version >= 0.1.4)
 
 The folder ARIA_RDK_template contains example projects for acquire data from the modules (image or raw)
 

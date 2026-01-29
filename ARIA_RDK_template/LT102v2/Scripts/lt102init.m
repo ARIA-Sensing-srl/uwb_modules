@@ -1,5 +1,5 @@
 #init procedure
-#pkg load aria_uwb_toolbox
+pkg load aria_uwb_toolbox
 min_range = 0.2;
 var_immediate_update("min_range");
 max_range = 2;

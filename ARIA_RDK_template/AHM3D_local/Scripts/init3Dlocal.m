@@ -1,32 +1,28 @@
 % *************************************************
 % ARIA Sensing srl 2025
 % Confidential-reserved
-% The script sets the parameter for recontruct the image
+% this scrits set the parameter for local volume reconstruction, the script retrieve the antenna topology to perform the volume computation
 % *************************************************
 
-#verify existence of mandatory variables
-if (exist('scan_sequence')==0)
-	printf('Error: scan sequence not defined\n')
-	return;
-end
 
-#setup variables for reconstruction
-algo="DMAS_SR";
-RhoStep = 0.05;                 #Rho resoluton
-RhoRange = [1.0 7.0];           #Rho range
-AzimStep = 5 * pi/180;         	#Azimuth resolution
-AzimRange = [-45 45] * pi/180; 	#Azimuth range
+#Local initialization
+#get mapping from encoded sequence
+var_immediate_inquiry("sequence");
+var_immediate_inquiry("fs");
+var_immediate_inquiry("fcarrier");
 
-##END OF PARAMETERS######################################
+rxMask = bitand(uint8(sequence), 0xF);
+txMask = bitand(bitshift(uint8(sequence),-4), 0xF);
+scan_sequence = log2([txMask' rxMask']);
 
-
-#Local variable initialization
+#get antennas configurations from radar
 get_antenna_config
 
 if (isempty(rxAnt) || isempty(txAnt))
   printf("antennas definition missing\n");
   return;
 end
+
 
 numSeq = size(scan_sequence, 1);
 hradar.TxRxCycle = zeros(2,4,numSeq);
@@ -36,6 +32,7 @@ for k = 1:numSeq
 endfor
 
 Rhobase = RhoRange(1):RhoStep:RhoRange(2);
+ZenithBase = ZenithRange(1):ZenithStep:ZenithRange(2);
 AzimBase = AzimRange(1):AzimStep:AzimRange(2);
 
 AntennaTx = zeros(4,3);

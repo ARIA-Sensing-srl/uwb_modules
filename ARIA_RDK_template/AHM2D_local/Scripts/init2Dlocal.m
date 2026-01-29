@@ -5,20 +5,18 @@
 % *************************************************
 
 #verify existence of mandatory variables
-if (exist('scan_sequence')==0)
-	printf('Error: scan sequence not defined\n')
-	return;
-end
 
-#setup variables for reconstruction
-algo="DMAS_SR";
-RhoStep = 0.05;                 #Rho resoluton
-RhoRange = [1.0 7.0];           #Rho range
-AzimStep = 5 * pi/180;         	#Azimuth resolution
-AzimRange = [-45 45] * pi/180; 	#Azimuth range
-
+embeddedImageAlgo = 0;
+var_immediate_update("embeddedImageAlgo");
 ##END OF PARAMETERS######################################
 
+var_immediate_inquiry("sequence");
+var_immediate_inquiry("fs");
+var_immediate_inquiry("fcarrier");
+
+rxMask = bitand(uint8(sequence), 0xF);
+txMask = bitand(bitshift(uint8(sequence),-4), 0xF);
+scan_sequence = log2([txMask' rxMask']);
 #Local variable initialization
 get_antenna_config
 

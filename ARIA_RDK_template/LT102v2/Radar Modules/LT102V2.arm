@@ -1,5 +1,5 @@
 <ARIA_Radar_Module radar_module_name="LT102V2.arm" xml_dataformat="0.1.0">
- <parameter_list count="32" expected_moduleid_value="0000020102000000" inquiry_instanceid_command="02" inquiry_moduleid_command="01">
+ <parameter_list count="32" expected_moduleid_value="0000020103000000" inquiry_instanceid_command="02" inquiry_moduleid_command="01">
   <parameter command_string="73" param_group="ungrouped" param_io="input" param_name="start" param_type="void" plotted="false" size="scalar"/>
   <parameter command_string="64[0]" param_group="data" param_io="output" param_name="data_count" param_type="uint16" plotted="false" size="scalar">
    <values size="0"></values>
