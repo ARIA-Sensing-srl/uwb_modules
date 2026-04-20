@@ -28,7 +28,7 @@ end
 
 config.algo="DMAS_SR";			#select the algorithm used for reconstruction DAS, DMAS, DAS_SR, DMAS_SR
 config.RhoStep = 0.05;                 #Downrange resolution in meters
-config.RhoRange = [1 7.0];             #Downrange span in meters
+config.RhoRange = [1 5.0];             #Downrange span in meters
 config.AzimStep = 5 * pi/180;         	#Angular reconstruction resolution in radiants
 config.AzimRange = [-45 45] * pi/180; 	#Angular span in radiants
 config.ZenithRange = [45 135] * pi/180;
@@ -38,6 +38,7 @@ config.iterations = []; 	#number of integrations, if [], scripts automatically s
 config.staticObjectRemoval = 1; #enable/disable static object removal algorithm
 config.staticObjectMapUpdateTime = 15.0; #time constant to update static object mapping
 config.embeddedImageCalculatorAlgorithm = 0;
+config.multistream=1; #number of acquisition for each data request
 config.profile=0;
 config.fps=20;
 

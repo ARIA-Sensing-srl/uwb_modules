@@ -36,6 +36,7 @@ config.staticObjectRemoval = 1; #enable/disable static object removal algorithm
 config.staticObjectMapUpdateTime = 15.0; #time constant to update static object mapping
 config.embeddedImageCalculatorAlgorithm = 0;
 config.profile=0;
+config.multistream=1; #number of acquisition for each data request
 config.fps=20;
 
 

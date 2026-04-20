@@ -45,7 +45,7 @@ for N = 1:4
   AntennaAmplRx(N) = config.rxAnt(N).ampl;
 end
 
-scan_sequence = log2([config.txMask' config.rxMask']);
+scan_sequence = txrxMap2antSequence(config.rxMask, config.txMask);
 
 numSeq = size(scan_sequence, 1);
 hradar.TxRxCycle = zeros(2,4,numSeq);

@@ -11,7 +11,7 @@ The new emPulse familiy and the current product line:
 6. AHM2DL
 
 	
-The folders OctaveStandalone contain scripts for native Octave environment (require aria_uwb_toolbox version >= 0.1.4)
+The folders OctaveStandalone contain scripts for native Octave environment (require aria_uwb_toolbox version >= 0.1.5)
 
 The folder ARIA_RDK_template contains example projects for acquire data from the modules (image or raw)
 
