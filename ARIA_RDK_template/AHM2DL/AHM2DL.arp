@@ -8,6 +8,7 @@
    <leaf filename="read_image.m" name="read_image.m" type="script"/>
    <leaf filename="read_raw_data.m" name="read_raw_data.m" type="script"/>
    <leaf filename="userparams2D.m" name="userparams2D.m" type="script"/>
+   <leaf filename="user_postacquisition.m" name="user_postacquisition.m" type="script"/>
   </leaf>
   <leaf filename="" name="Handler" type="folder"/>
   <leaf filename="" name="Radar Modules" type="folder">
