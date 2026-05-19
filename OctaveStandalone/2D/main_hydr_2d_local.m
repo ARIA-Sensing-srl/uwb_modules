@@ -104,7 +104,8 @@ while ((failcnt < failcntlimit))
     data(N,:) = data(N,:) * AmplCorrection(N);
   endfor
 
-  output_image = imageReconstruction(hradar,data, AzimBase, Rhobase ,config.algo);
+  hradar = beamforming2d(hradar,data, AzimBase, Rhobase ,config.algo);
+  output_image = hradar.beamformed_image;
 
   if (isDMAS)
     output_image  = real(output_image );
@@ -112,9 +113,9 @@ while ((failcnt < failcntlimit))
     output_image  = abs(output_image );
   endif
 
-  imagesc(AzimBase, Rhobase, abs(output_image)');
-  xlabel("Azimuth");
-  ylabel("Rho");
+  imagesc(Rhobase,AzimBase, abs(output_image)');
+  ylabel("Azimuth");
+  zlabel("Rho");
 
   drawnow;
 end

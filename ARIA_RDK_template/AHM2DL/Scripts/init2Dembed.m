@@ -8,10 +8,10 @@
 
 
 #Stop module before configure
-var_immediate_command("stop");
+var_immediate_command_pipe("stop");
 
 embeddedImageAlgo=1; #enable internal imaging algorithm
-var_immediate_update("embeddedImageAlgo");
+var_immediate_update_pipe("embeddedImageAlgo");
 cnvs_algo=1;
 cnvs_rhoMin = RhoRange(1);
 cnvs_rhoMax = RhoRange(2); 
@@ -19,12 +19,12 @@ cnvs_rhoStep = RhoStep;
 cnvs_azimStep = AzimStep*180/pi;
 cnvs_azimMin = AzimRange(1)*180/pi;
 cnvs_azimMax = AzimRange(2)*180/pi;
-var_immediate_update("cnvs_algo");
-#var_immediate_inquiry("cnvs_algo");
+var_immediate_update_pipe("cnvs_algo");
+#var_immediate_inquiry_pipe("cnvs_algo");
 
 
 #start operations
-var_immediate_command("start");
+var_immediate_command_pipe("start");
 
 printf("Embed reconstruction init complete\n");
 

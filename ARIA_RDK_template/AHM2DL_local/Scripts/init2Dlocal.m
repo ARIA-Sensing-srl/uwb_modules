@@ -5,14 +5,14 @@
 % *************************************************
 
 #verify existence of mandatory variables
-
+clear "hradar"
 embeddedImageAlgo = 0;
-var_immediate_update("embeddedImageAlgo");
+var_immediate_update_pipe("embeddedImageAlgo");
 ##END OF PARAMETERS######################################
 
-var_immediate_inquiry("sequence");
-var_immediate_inquiry("fs");
-var_immediate_inquiry("fcarrier");
+var_immediate_inquiry_pipe("sequence");
+var_immediate_inquiry_pipe("fs");
+var_immediate_inquiry_pipe("fcarrier");
 
 rxMask = bitand(uint8(sequence), 0xF);
 txMask = bitand(bitshift(uint8(sequence),-4), 0xF);

@@ -3,5 +3,5 @@
 % Confidential-reserved
 % *************************************************
 
-var_immediate_inquiry("get_ant_array");
+var_immediate_inquiry_pipe("get_ant_array");
 [rxAnt, txAnt] = msgdec_ant_config(get_ant_array);

@@ -7,7 +7,7 @@
    <leaf filename="userparam3D.m" name="userparam3D.m" type="script"/>
    <leaf filename="init3Dlocal.m" name="init3Dlocal.m" type="script"/>
    <leaf filename="reconstruct_volume.m" name="reconstruct_volume.m" type="script"/>
-   <leaf filename="3d_max2d_split.m" name="3d_max2d_split.m" type="script"/>
+   <leaf filename="computeSplitView.m" name="computeSplitView.m" type="script"/>
    <leaf filename="read_raw_data.m" name="read_raw_data.m" type="script"/>
   </leaf>
   <leaf filename="" name="Handler" type="folder"/>

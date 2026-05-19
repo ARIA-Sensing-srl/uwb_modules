@@ -106,8 +106,8 @@ while ((failcnt < failcntlimit))
     data(N,:) = data(N,:) * AmplCorrection(N);
   endfor
 
-  output_volume = imageReconstruction_3D(hradar,data, AzimBase, ZenithBase, Rhobase ,config.algo);
-
+  hradar = beamforming3d(hradar,data, AzimBase, ZenithBase, Rhobase ,config.algo);
+  output_volume = hradar.beamformed_image;
   if (isDMAS)
     output_volume  = real(output_volume );
   else

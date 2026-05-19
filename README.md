@@ -11,7 +11,7 @@ The new emPulse familiy and the current product line:
 6. AHM2DL
 
 	
-The folders OctaveStandalone contain scripts for native Octave environment (require aria_uwb_toolbox version >= 0.1.5)
+The folders OctaveStandalone contain scripts for native Octave environment (require aria_uwb_toolbox version >= 0.2.0)
 
 The folder ARIA_RDK_template contains example projects for acquire data from the modules (image or raw)
 
@@ -64,7 +64,7 @@ Partially processed data (antenna polarity correction) are stored into "output_d
 	init_3D_local_reconstruction: additional init procedure, setup the device for execute image build locally (PC). User can modifiy recontruction range here.
 	read_raw_data: get one stream for each antenna pair and compensates the antenna polariy
 	reconstruct_volume: combine the streams to get the output volume
-	3d_max2d_split: auxiliary script, used only for visualization purpose, search for the max amplitude inside the volume and generate two 2D image (one plane parallel to X-Y plane and one parallel to Y-Z plane). The two planes cross the point where the maximum amplitude is detected.
+	computeSplitView: auxiliary script, used only for visualization purpose, search for the max amplitude inside the volume and generate two 2D image (one plane parallel to X-Y plane and one parallel to Y-Z plane). The two planes cross the point where the maximum amplitude is detected.
 
 
    

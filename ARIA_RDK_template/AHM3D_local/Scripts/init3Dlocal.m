@@ -4,12 +4,12 @@
 % this scrits set the parameter for local volume reconstruction, the script retrieve the antenna topology to perform the volume computation
 % *************************************************
 
-
+clear "hradar"
 #Local initialization
 #get mapping from encoded sequence
-var_immediate_inquiry("sequence");
-var_immediate_inquiry("fs");
-var_immediate_inquiry("fcarrier");
+var_immediate_inquiry_pipe("sequence");
+var_immediate_inquiry_pipe("fs");
+var_immediate_inquiry_pipe("fcarrier");
 
 rxMask = bitand(uint8(sequence), 0xF);
 txMask = bitand(bitshift(uint8(sequence),-4), 0xF);

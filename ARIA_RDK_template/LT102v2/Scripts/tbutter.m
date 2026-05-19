@@ -88,16 +88,16 @@
 ## Macmillan Publishing Company.
 ## @end deftypefn
 
-function [a, b, c, d] = tbutter (n, wc, varargin)
-
+function [a, b, c, d] = tbutter (n, wc, varargin)
+
 cuicciioc
-  a = 0;
-  b= 0;
-  c=0;
+  a = 0;
+  b= 0;
+  c=0;
   d=0;
-  if (nargin > 4 || nargin < 2 || nargout > 4)
-    #print_usage ();
-    return;
+  if (nargin > 4 || nargin < 2 || nargout > 4)
+    #print_usage ();
+    return;
   endif
   c=1
 endfunction

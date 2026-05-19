@@ -4,8 +4,9 @@
 % this script call the reconstruction algorithm and compute the output image
 % *************************************************
 
-output_image = transpose(imageReconstruction(hradar,output_data_final, AzimBase, Rhobase ,algo));
+hradar = beamforming2d(hradar,output_data_final, AzimBase, Rhobase ,algo);
 
+output_image = hradar.beamformed_image;
 #Output image is stored into a 2D array as Rho(downrange) x Azimuth
 
 ##OUTPUT TO PLOT img2plot

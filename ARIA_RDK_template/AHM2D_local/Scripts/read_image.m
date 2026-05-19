@@ -3,5 +3,5 @@
 % Confidential-reserved
 % *************************************************
 
-var_immediate_inquiry("get_image");
+var_immediate_inquiry_pipe("get_image");
 output_image = msgdec_image( get_image );

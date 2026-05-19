@@ -166,7 +166,7 @@ High sensitivity single
   <post_acquisition_scripts count="3">
    <script filename="read_raw_data.m" script_name="read_raw_data.m"/>
    <script filename="reconstruct_volume.m" script_name="reconstruct_volume.m"/>
-   <script filename="3d_max2d_split.m" script_name="3d_max2d_split.m"/>
+   <script filename="computeSplitView.m" script_name="computeSplitView.m"/>
   </post_acquisition_scripts>
  </radar_device>
 </ARIA_Radar_Device>

@@ -12,7 +12,7 @@ mapOut = abs(dataformap(distbinout))';
 
 if (sum(sum(mapOut))==0)
   mapOut(1,1)=0.1;
-end
-
-%mapOut(min(mapOut)<1e-4)=1e-4;
+end
+
+%mapOut(min(mapOut)<1e-4)=1e-4;
 %mapOut = log(abs(mapOut));
