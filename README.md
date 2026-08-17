@@ -66,5 +66,8 @@ Partially processed data (antenna polarity correction) are stored into "output_d
 	reconstruct_volume: combine the streams to get the output volume
 	computeSplitView: auxiliary script, used only for visualization purpose, search for the max amplitude inside the volume and generate two 2D image (one plane parallel to X-Y plane and one parallel to Y-Z plane). The two planes cross the point where the maximum amplitude is detected.
 
+.ARIA_RDK_template/AHM2D_tracker
+Setups the device to run the embedded segmentaion and tracking algorithm. Target position and estimated speed are stored into tr_x, tr_y, tr_vx, tr_vy. 
+
 
    
