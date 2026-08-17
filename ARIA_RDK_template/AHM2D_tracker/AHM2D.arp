@@ -1,0 +1,23 @@
+<ARIA_Radar_Project xml_dataformat="0.1.0">
+ <leaf filename="AHM2D.arp" name="AHM2D" type="root">
+  <leaf filename="" name="Radar devices" type="folder">
+   <leaf filename="AHM2D.ard" name="AHM2D.ard" type="radardevice"/>
+  </leaf>
+  <leaf filename="" name="Scripts" type="folder">
+   <leaf filename="userparams2D.m" name="userparams2D.m" type="script"/>
+   <leaf filename="init2Dembed.m" name="init2Dembed.m" type="script"/>
+   <leaf filename="read_image.m" name="read_image.m" type="script"/>
+   <leaf filename="read_raw_data.m" name="read_raw_data.m" type="script"/>
+   <leaf filename="user_postacquisition.m" name="user_postacquisition.m" type="script"/>
+   <leaf filename="trackerSetup.m" name="trackerSetup.m" type="script"/>
+   <leaf filename="getTrackAndDecode.m" name="getTrackAndDecode.m" type="script"/>
+   <leaf filename="plotVectors.m" name="plotVectors.m" type="script"/>
+  </leaf>
+  <leaf filename="" name="Handler" type="folder"/>
+  <leaf filename="" name="Radar Modules" type="folder">
+   <leaf filename="AHM2D.arm" name="AHM2D.arm" type="radarmodule"/>
+  </leaf>
+  <leaf filename="" name="Protocols" type="folder"/>
+  <leaf filename="" name="Antenna Models" type="folder"/>
+ </leaf>
+</ARIA_Radar_Project>

@@ -1,0 +1,1 @@
+%User post acquisition script
