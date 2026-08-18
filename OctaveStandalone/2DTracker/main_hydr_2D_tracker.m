@@ -28,19 +28,19 @@ if (isempty(board))
 end
 
 ##USER PARAMETERS###################################
-
-config.RhoRange = [-0.5 7.0];	#acquisition downrange settings (meters)
-config.iterations = 10000; 	#number of integrations, if [], scripts automatically set according to the HW
+xmax = 4;	#max detection range
+config.RhoRange = [-0.5 xmax];	#acquisition downrange settings (meters)
+config.iterations = 8000; 	#number of integrations, if [], scripts automatically set according to the HW
 config.staticObjectRemoval = 1; #enable/disable static object removal algorithm
 config.staticObjectMapUpdateTime = 40.0; #time constant to update static object mapping
 config.profile=0;
 config.multistream=1; #number of acquisition for each data request
 config.fps=20;		#frame rate
-config.rxgain=5;	
+config.rxgain=5;
 config.canvasData.algo = 1;		#image reconstruction algorithm (0: DAS, 1: DMAS)
 config.canvasData.rhoMin = 0.2;		#reconstruction min downrange
 config.canvasData.rhoStep = 0.15;	#reconstruction step downrange
-config.canvasData.rhoMax = 7.0;		#reconstruction max downrange
+config.canvasData.rhoMax = xmax;		#reconstruction max downrange
 config.canvasData.phiMin = -60;		#crossrange min angle
 config.canvasData.phiStep = 5;		#crossrange step angle
 config.canvasData.phiMax = 60;		#crossrange max angle
@@ -49,7 +49,7 @@ disable_ID = 0;             #display trace ID
 plot_speed = 1;             #display speed arrow
 axisLimit = [-1.5 1.5 0 6.5]; #axis limit for 2D plot (meters)
 
-SNRs = [40 20 2.0 1.0];      #range thresholds (absolute values)
+SNRs = [60 40 3.0 3.0];      #range thresholds (absolute values)
 SNRRanges = [0.8 1.2 3.5]; #range distange for range profile (meters)
 
 ##END PARAMETERS####################################
@@ -101,6 +101,7 @@ end
 [rc,kalman] = set_kalman_2D(board, []);
 
 kalman.gateInTicks = 10;
+kalman.acc_unc = 0.25;
 [rc,kalman] = set_kalman_2D(board, kalman);
 
 
