@@ -26,7 +26,7 @@ end
 
 
 
-config.RhoStep = 0.05;                 #Downrange resolution in meters
+config.RhoStep = 0.15;                 #Downrange resolution in meters
 config.RhoRange = [0 7.0];             #Downrange span in meters
 config.AzimStep = 5 * pi/180;         	#Angular reconstruction resolution in radiants
 config.AzimRange = [-45 45] * pi/180; 	#Angular span in radiants
