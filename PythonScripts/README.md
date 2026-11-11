@@ -6,7 +6,7 @@ The folders contain scripts for native Python environment.
 
 This project requires **Python 3.12+** and the following third-party libraries: <!-- Ho messo la versione di python che sto usando io -->
 
-* **AHMAPIpy** — Proprietary library for the AHM API (Provided directly by us; please follow the instructions in the dedicated section).
+* **AHMAPIpy** — Library for the AHM API (https://github.com/ARIA-Sensing-srl/APIPython.git).
 * **pyserial** — For serial communication with devices (pip install pyserial).
 * **matplotlib** — For data visualization and plotting (pip install matplotlib).
 * **numpy** — For numerical computing and array manipulation (pip install numpy).
@@ -52,7 +52,7 @@ python main_hydr_2d_local.py
 
 **Specifying a specific serial port (Linux) and duration:**
 ```bash
-python main_hydr_2d_local.py -p /dev/ttyUSB0 -t 1
+python main_hydr_acq2file.py -p /dev/ttyUSB0 -t 1
 ```
 
 
