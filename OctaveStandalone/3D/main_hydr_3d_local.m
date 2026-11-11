@@ -31,8 +31,8 @@ config.RhoStep = 0.05;                 #Downrange resolution in meters
 config.RhoRange = [1 5.0];             #Downrange span in meters
 config.AzimStep = 5 * pi/180;         	#Angular reconstruction resolution in radiants
 config.AzimRange = [-45 45] * pi/180; 	#Angular span in radiants
-config.ZenithRange = [45 135] * pi/180;
-config.ZenithStep = 5 * pi/180;
+config.ElevRange = [-45 45] * pi/180;
+config.ElevStep = 5 * pi/180;
 
 config.iterations = []; 	#number of integrations, if [], scripts automatically set according to the HW
 config.staticObjectRemoval = 1; #enable/disable static object removal algorithm
@@ -47,9 +47,15 @@ config.fps=20;
 ##END PARAMETERS####################################
 
 
+
+#create Zenithal reference
+config.ZenithRange = -config.ElevRange+pi/2;
+config.ZenithStep = -config.ElevStep;
+
 Rhobase = config.RhoRange(1):config.RhoStep:config.RhoRange(2);
 AzimBase = config.AzimRange(1):config.AzimStep:config.AzimRange(2);
 ZenithBase = config.ZenithRange(1):config.ZenithStep:config.ZenithRange(2);
+ElevBase = config.ElevRange(1):config.ElevStep:config.ElevRange(2);
 
 [rc, config] = configureDevice(board, config);
 
@@ -133,10 +139,11 @@ while ((failcnt < failcntlimit))
   img2d = squeeze(output_volume(:,:, maxR3I));
 
   subplot(1,2,1);
-  imagesc(ZenithBase*180/pi, AzimBase*180/pi,  abs(imgMax));
+  imagesc(AzimBase*180/pi ,ElevBase*180/pi  ,abs(imgMax'));
+  set(gca,'YDir','normal')
   title("YZ plane");
-  ylabel("Azimuth");
-  xlabel("Zenith");
+  ylabel("Elevation");
+  xlabel("Azimuth");
   subplot(1,2,2);
   imagesc(AzimBase*180/pi,Rhobase, abs(img2d));
   title("XY plane");
