@@ -65,7 +65,7 @@ config = SimpleNamespace()
 
 config.algo="DMAS_SR"     #select the algorithm used for reconstruction DAS, DMAS, DAS_SR, DMAS_SR
 config.RhoStep = 0.05                #Downrange resolution in meters
-config.RhoRange = [1, 5.0]          #Downrange span in meters
+config.RhoRange = [1.0, 5.0]          #Downrange span in meters
 config.AzimStep = 5 * np.pi/180         #Azimuth angular reconstruction resolution in radiants
 config.AzimRange = np.array([-45, 45]) * np.pi/180   #Angular span in radiants
 config.ElevRange = np.array([-45, 45]) * np.pi/180   # Elevation angular reconstruction resolution in radiants
@@ -86,7 +86,7 @@ config = configureDevice(config, radar)
 
 rhoBase = np.arange(config.RhoRange[0], config.RhoRange[1] + config.RhoStep, config.RhoStep)
 azimBase = np.arange(config.AzimRange[0], config.AzimRange[1] + config.AzimStep, config.AzimStep)
-zenBase = np.arange(np.radians(config.ElevRange[1]+90), np.radians(config.ElevRange[0]+90) + config.ElevStep, -config.ElevStep)
+zenBase = np.arange(np.radians(np.degrees(config.ElevRange[1])+90), np.radians(np.degrees(config.ElevRange[0]+90)) + config.ElevStep, -config.ElevStep)
 
 distbin = 1.5e8 / config.fs
 
@@ -110,6 +110,7 @@ data = radar.rdr_rx_multichannel()
 
 extent_yz = [np.degrees(azimBase).min(), np.degrees(azimBase).max(), np.degrees(config.ElevRange).min(), np.degrees(config.ElevRange).max()]
 extent_xy = [np.degrees(azimBase).min(), np.degrees(azimBase).max(), rhoBase.min(), rhoBase.max()]
+print(extent_xy)
 
 imageR = imageReconstruction3D(hradar, data, zenBase, azimBase, rhoBase, config.algo)
 temp_ind = np.argmax(imageR)
@@ -125,7 +126,7 @@ img_xy = axes[1].imshow(np.abs(img2d), extent=extent_xy, aspect='auto', origin='
 axes[1].set_title('XY plane')
 axes[1].set_ylabel('Rho')
 axes[1].set_xlabel('Azimuth')
-line_xy = axes[1].axhline(y=0, color='r', linewidth=2)
+line_xy = axes[1].axhline(y=rhoBase.min(), color='r', linewidth=2)
 
 plt.ion()
 plt.draw()
@@ -156,8 +157,6 @@ try:
 
             imgMax = output_volume[x_max, :, :]
             img2d = output_volume[:, :, z_max]
-
-            #cor_imgMax = np.flip(imgMax, axis=1) # need it for correct visualization
 
             img_yz.set_data(imgMax.T)
             img_yz.set_clim(vmin=0, vmax=np.max(imgMax))
