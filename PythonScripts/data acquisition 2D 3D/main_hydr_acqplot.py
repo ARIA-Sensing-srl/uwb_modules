@@ -34,7 +34,10 @@ if args.port is None:
         if platform.system() != "Windows" and "ttyS" in i.device:
             continue
         try:
-            available_port = i.device
+            deviceName = i.device
+            if platform.system() == "Windows":
+                deviceName = "\\\\.\\" + deviceName
+            available_port = deviceName
             radar = m.RadarHandler(serial_comunication=args.mode, COM=available_port, BR=args.baud)
             print("Port found")
             break
