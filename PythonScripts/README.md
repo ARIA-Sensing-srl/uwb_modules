@@ -37,7 +37,7 @@ You can pass the following options to any main script:
 | Short | Long | Type | Default | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | `-m` | `--mode` | `str` | `"UART"` | Type of communication interface. |
-| `-p` | `--port` | `str` | `None` | The specific COM/serial port. If left as `None`, the script will automatically scan and select an available port. |
+| `-p` | `--port` | `str` | `None` | The specific COM/serial port. If not provided, the script will automatically scan and select an available port. **Linux users: if serial port isn't found, check user permissions.**  |
 | `-b` | `--baud` | `int` | `921600` | Baud rate for the serial communication. |
 | `-t` | `--time` | `float` | `10.0` | **(`main_hydr_acq2file.py` only)** Acquisition time in seconds. |
 
