@@ -4,7 +4,7 @@ The folders contain scripts for native Python environment.
 
 ## Prerequisites
 
-This project requires **Python 3.12+** and the following third-party libraries: <!-- Ho messo la versione di python che sto usando io -->
+This project requires **Python 3.12+** and the following third-party libraries:
 
 * **AHMAPIpy** — Library for the AHM API (https://github.com/ARIA-Sensing-srl/APIPython.git).
 * **pyserial** — For serial communication with devices (pip install pyserial).
@@ -19,7 +19,7 @@ This project requires **Python 3.12+** and the following third-party libraries: 
   * `main_hydr_2d_local.py` — Sets up the device and visualizes the 2D reconstructed image. The image is computed on the PC.
   * `configureDevice.py`, `setupLocalReconstruction.py`, `imageReconstruction.py` — Utility functions used in the scripts above for device configuration and image reconstruction algorithms.
 
-* **3D** — Examples for 3D Series devices focused on image reconstruction and visualization.
+* **3D** — Example for 3D Series devices focused on image reconstruction and visualization.
   * `main_hydr_3d_local.py` — Sets up the device and visualizes the 3D reconstructed image. The image is computed on the PC.
   * `configureDevice.py`, `setupLocalReconstruction.py`, `imageReconstruction3D.py` — Utility functions used in the scripts above for device configuration and image reconstruction algorithms.
   
@@ -27,6 +27,10 @@ This project requires **Python 3.12+** and the following third-party libraries: 
   * `main_hydr_acq2file.py` — Sets up the device, acquires data for a specified duration (in seconds), and stores it in a custom-named JSON file. 
   * `main_hydr_acqplot.py` — Sets up the device and visualizes real, imaginary, and envelope plots from the acquired data.
   * `configureDevice.py` — Utility function used in the scripts above for device configuration.
+
+* **2DTraker** — Example for 2D devices for visualize target position.
+  * `main_hydr_2d_tracker.py` — The script configures and enables the tracker algorithm implemented for 2D series devices. 
+  * `configureDevice_tracker.py` — Utility function used in the script above for device configuration.
 
 ## Usage
 

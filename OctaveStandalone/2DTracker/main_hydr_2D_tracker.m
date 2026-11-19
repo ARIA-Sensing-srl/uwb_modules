@@ -105,10 +105,6 @@ kalman.acc_unc = 0.25;
 [rc,kalman] = set_kalman_2D(board, kalman);
 
 
-
-distbin = 1.5e8/config.fs;
-
-
 #end radar intialization code############################
 fprintf("\n\nInitialization complete\n");
 fprintf("Focus the command window and press Esc to stop\n");
@@ -117,8 +113,6 @@ fprintf("Focus the command window and press Esc to stop\n");
 figure;
 failcnt = 0;
 failcntlimit = 5;
-lastMax = 0;
-lastMaxUpdateCnt = 0;
 
 while(kbhit(1)==27)
   pause(0.005);
@@ -133,17 +127,15 @@ while ((failcnt < failcntlimit))
   if (kbhit(1)==27)
 				break;
   end;
-  [data, etime, fmt] = read_raw_data_multiple(board);
-
-  if (isempty(data))
-    failcnt = failcnt+1;
-    drawnow;
-    continue,
-  endif
 
   [ rc ,detOut, detFullState] = get_detection_2D(board, 4);
+
   if (rc)
+    failcnt = failcnt+1;
+    drawnow;
     continue;
+  else
+    failcnt = 0;
   endif
 
   if (isempty(detOut)==0)
