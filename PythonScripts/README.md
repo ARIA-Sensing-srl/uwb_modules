@@ -43,7 +43,15 @@ You can pass the following options to any main script:
 | `-m` | `--mode` | `str` | `"UART"` | Type of communication interface. |
 | `-p` | `--port` | `str` | `None` | The specific COM/serial port. If not provided, the script will automatically scan and select an available port. **Linux users: if serial port isn't found, check user permissions.**  |
 | `-b` | `--baud` | `int` | `921600` | Baud rate for the serial communication. |
+
+Special cases:
+
+| Short | Long | Type | Default | Description |
+| :--- | :--- | :--- | :--- | :--- |
 | `-t` | `--time` | `float` | `10.0` | **(`main_hydr_acq2file.py` only)** Acquisition time in seconds. |
+| `-i` | `--disable_ID` | `flag` | `False` | **(`main_hydr_2d_tracker.py` only)** Disable plotting of trace IDs. |
+| `-e` | `--disable_ellipse` | `flag` | `False` | **(`main_hydr_2d_tracker.py` only)** Disable plotting of ellipses. |
+| `-s` | `--disable_speed` | `flag` | `False` | **(`main_hydr_2d_tracker.py` only)** Disable plotting of speed vectors. |
 
 ## Exemples
 

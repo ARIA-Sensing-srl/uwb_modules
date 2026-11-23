@@ -27,7 +27,14 @@ if __name__ == "__main__":
     parser.add_argument("-m", "--mode", required=False, type=str, default="UART", help="Type of communication (default UART)")
     parser.add_argument("-p", "--port", required=False, type=str, default=None, help="COM port")
     parser.add_argument("-b", "--baud", required=False, type=int, default=921600, help="Baud rate default (default 921600)")
+    parser.add_argument("-i", "--disable_ID", action="store_true", help="Disable plotting of trace IDs")
+    parser.add_argument("-e", "--disable_ellipse", action="store_true", help="Disable plotting of ellipses")
+    parser.add_argument("-s", "--disable_speed", action="store_true", help="Disable plotting of speed vectors")
     args = parser.parse_args()
+
+disable_ID = args.disable_ID
+disable_ellipse = args.disable_ellipse
+disable_speed = args.disable_speed
 
 # Try to find the connected serial port
 available_port = None
@@ -80,8 +87,6 @@ config.canvasData.phiMin = -60  #crossrange min angle
 config.canvasData.phiStep = 5 #crossrange step angle
 config.canvasData.phiMax = 60 #crossrange max angle
 
-disable_ID = 0             #display trace ID
-plot_speed = 1             #display speed arrow
 axisLimit = [-1.5, 1.5, 0, 6.5] #axis limit for 2D plot (meters)
 
 SNRs = [60, 40, 3.0, 3.0]      #range thresholds (absolute values)
@@ -149,27 +154,32 @@ try:
             for n in range(len(detFullState)):
               curSV = detFullState[n].sv
               curP = detFullState[n].P
-              S = np.linalg.inv(H @ curP @ H.T)
-              rot = 0.5 * math.atan2((S[0][1] + S[1][0]), (S[0][0] - S[1][1]))
-              T = np.linalg.inv(np.array([[np.cos(rot), np.sin(rot)],[-np.sin(rot), np.cos(rot)]])**2)
-              o = T @ np.array([S[0, 0], S[1, 1]])
-              Ra = np.sqrt(1/o[0])
-              Rb = np.sqrt(1/o[1])
-              ellipse = Ellipse(
-                  xy=(curSV[0], curSV[2]),
-                  width=2 * Rb,
-                  height=2 * Ra,
-                  angle=rot * 180 / math.pi,
-                  edgecolor='blue',
-                  facecolor='none',
-                  linewidth=3
-              )
-              ax.add_patch(ellipse)
+
+              #Check if curP is singular
+              is_singular = np.linalg.matrix_rank(curP) < len(curP)
+              if not is_singular and not disable_ellipse:
+                S = np.linalg.inv(H @ curP @ H.T)
+                rot = 0.5 * math.atan2((S[0][1] + S[1][0]), (S[0][0] - S[1][1]))
+                T = np.linalg.inv(np.array([[np.cos(rot), np.sin(rot)],[-np.sin(rot), np.cos(rot)]])**2)
+                o = T @ np.array([S[0, 0], S[1, 1]])
+                Ra = np.sqrt(1/o[0])
+                Rb = np.sqrt(1/o[1])
+                ellipse = Ellipse(
+                    xy=(curSV[0], curSV[2]),
+                    width=2 * Rb,
+                    height=2 * Ra,
+                    angle=rot * 180 / math.pi,
+                    edgecolor='blue',
+                    facecolor='none',
+                    linewidth=3
+                )
+                ax.add_patch(ellipse)
+
               out_string = f"{int(detOut[n, 2])}"
-              if disable_ID == 0:
+              if not disable_ID:
                 ax.text(detOut[n, 0] + 0.1, detOut[n, 1], out_string, fontsize=15)
 
-              if plot_speed == 1:
+              if not disable_speed:
                 ax.quiver(curSV[0], curSV[2], curSV[1], curSV[3], angles='xy', scale_units='xy', scale=1, linewidth=1, width=0.004, headwidth=3, headlength=4)
 
             ax.set_xlim(axisLimit[0], axisLimit[1])

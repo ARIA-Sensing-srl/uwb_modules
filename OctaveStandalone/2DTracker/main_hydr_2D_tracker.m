@@ -45,8 +45,10 @@ config.canvasData.phiMin = -60;		#crossrange min angle
 config.canvasData.phiStep = 5;		#crossrange step angle
 config.canvasData.phiMax = 60;		#crossrange max angle
 
-disable_ID = 0;             #display trace ID
-plot_speed = 1;             #display speed arrow
+disable_ID = 0;             #disable display trace ID
+disable_speed = 0;             #disable display speed arrow
+disable_ellipse = 0;        ##disable display speed arrow
+
 axisLimit = [-1.5 1.5 0 6.5]; #axis limit for 2D plot (meters)
 
 SNRs = [60 40 3.0 3.0];      #range thresholds (absolute values)
@@ -138,26 +140,30 @@ while ((failcnt < failcntlimit))
     failcnt = 0;
   endif
 
-  if (isempty(detOut)==0)
+  if (isempty(detOut)==0 )
     plot( detOut(:,1), detOut(:,2), '*r', 'linewidth', 10);
     hold on;
     if (isempty(detFullState) == 0)
       for N = 1:length(detFullState);
         curSV = detFullState(N).StateVector;
         curP = detFullState(N).P;
-        S = inv(H *  curP * H');
-        rot = 0.5*atan((S(1,2)+S(2,1))/(S(1,1)-S(2,2)));
-        T = inv([cos(rot) sin(rot); -sin(rot) cos(rot)].^2);
-        o = T * [S(1,1) S(2,2)]';
-        Ra = sqrt(1/o(1));
-        Rb = sqrt(1/o(2));
-        drawEllipse(curSV(1), curSV(3), Rb, Ra, rot*180/pi, 'linewidth', 3);
-        str = sprintf("%d", detOut(N,3));
-        if (disable_ID ==0)
-          text(detOut(N,1)+0.1, detOut(N,2), str,"fontsize", 30);
-        end
-        if (plot_speed == 1)
 
+        if (disable_ellipse == 0)
+          S = inv(H *  curP * H');
+          rot = 0.5*atan((S(1,2)+S(2,1))/(S(1,1)-S(2,2)));
+          T = inv([cos(rot) sin(rot); -sin(rot) cos(rot)].^2);
+          o = T * [S(1,1) S(2,2)]';
+          Ra = sqrt(1/o(1));
+          Rb = sqrt(1/o(2));
+          drawEllipse(curSV(1), curSV(3), Rb, Ra, rot*180/pi, 'linewidth', 3);
+        endif
+        str = sprintf("%d", detOut(N,3));
+
+        if (disable_ID == 0)
+          text(detOut(N,1)+0.1, detOut(N,2), str,"fontsize", 30);
+        endif
+
+        if (disable_speed == 0)
           quiver(curSV(1), curSV(3), curSV(2), curSV(4), 'linewidth', 3);
         endif
       endfor
